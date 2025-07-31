@@ -1,6 +1,8 @@
-export default function Header({ toggleCartAction }: {
+type HeaderProps = {
   toggleCartAction: () => void
-}) {
+}
+
+export default function Header({ toggleCartAction }: HeaderProps) {
   return (
     <>
       <div className="grid grid-cols-3 gap-5">

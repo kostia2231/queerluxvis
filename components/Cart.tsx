@@ -1,21 +1,66 @@
 'use client'
+import { motion, AnimatePresence } from "motion/react"
+import { useState, useEffect, useRef } from "react"
 
-export default function Cart({ toggleCartAction }: {
+type CartProps = {
   toggleCartAction: () => void
-}) {
+  isClosed: boolean
+}
+
+export default function Cart({
+  toggleCartAction,
+  isClosed,
+}: CartProps) {
+  const [isVisible, setIsVisible] = useState(!isClosed)
+  const cartRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        toggleCartAction()
+      }
+    }
+
+    if (!isClosed) {
+      document.addEventListener("mousedown", handleClickOutside)
+      setIsVisible(true)
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside)
+      setIsVisible(false)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isClosed, toggleCartAction])
+
   return (
-    <>
-      <div id="cart" className="min-h-screen w-1/2 bg-white fixed right-0 border-l">
-        <div className="flex justify-between border-b">
-          <div></div>
-          <div className="p-5">
-            <p onClick={() => toggleCartAction()} className="cursor-pointer">Close</p>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          ref={cartRef}
+          key="cart"
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "100%" }}
+          transition={{
+            type: "spring", duration: 0.55, bounce: 0.25
+          }}
+          className="min-h-screen w-1/2 bg-white fixed right-0 border-l z-50"
+        >
+          <div className="flex justify-between border-b">
+            <div></div>
+            <div className="p-5">
+              <p onClick={toggleCartAction} className="cursor-pointer">
+                Close
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="p-5">
-          <p>Empty...</p>
-        </div>
-      </div>
-    </>
+          <div className="py-5">
+            <p>Empty</p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }

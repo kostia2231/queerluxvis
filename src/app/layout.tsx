@@ -12,25 +12,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const [isClosed, setIsClosed] = useState<boolean>(false)
+  const [isClosed, setIsClosed] = useState<boolean>(true);
   function toggleCartAction() {
-    const cart = document?.getElementById("cart")
-    if (!cart) return
-
-    if (!isClosed) {
-      cart.style.display = "none"
-    } else {
-      cart.style.display = "block"
-    }
-    setIsClosed(!isClosed)
+    setIsClosed(prev => !prev);
   }
 
   return (
     <html lang="en">
       <body className="px-5 flex flex-col min-h-screen">
         <GridElement />
-        <Cart toggleCartAction={toggleCartAction} />
+        <Cart toggleCartAction={toggleCartAction} isClosed={isClosed} />
         <Header toggleCartAction={toggleCartAction} />
         <main className="flex-grow min-h-screen">{children}</main>
         <Footer />
