@@ -1,4 +1,6 @@
+'use client'
 import PlusIcon from "./PlusIcon"
+import { motion } from "motion/react"
 
 export default function ProductMenuElement() {
   return (
@@ -11,7 +13,12 @@ export default function ProductMenuElement() {
               <p>Book Title Here</p>
               <p>— €50.0</p>
             </div>
-            <PlusIcon />
+            <motion.div className="w-fit h-fit cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <PlusIcon />
+            </motion.div>
           </div>
         </div>
         <div></div>

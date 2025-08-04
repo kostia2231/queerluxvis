@@ -16,7 +16,6 @@ export default function Footer() {
         </div>
         <div className="bg-gray-200 py-5" />
         <div className="bg-gray-200 py-5 flex flex-col">
-          <p>Contact</p>
           <p>+49 160 885 0123</p>
           <p>info@queerluxvis.com</p>
         </div>
