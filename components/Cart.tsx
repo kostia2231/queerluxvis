@@ -46,7 +46,7 @@ export default function Cart({
           transition={{
             type: "spring", duration: 0.55, bounce: 0.25
           }}
-          className="min-h-screen w-1/2 bg-white fixed right-0 border-l z-50"
+          className="h-screen w-1/2 bg-white fixed right-0 border-l z-50"
         >
           <div className="flex justify-between border-b">
             <div></div>
@@ -56,8 +56,9 @@ export default function Cart({
               </p>
             </div>
           </div>
-          <div className="py-5">
+          <div className="py-5 overflow-y-auto h-[calc(100vh-154px)] ">
             <p>Empty</p>
+            <p className="absolute bottom-0 py-5 bg-gray-200 w-full cursor-pointer font-bold border-b">Proceed To Checkout</p>
           </div>
         </motion.div>
       )}

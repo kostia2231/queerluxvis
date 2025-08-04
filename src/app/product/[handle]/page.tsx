@@ -25,7 +25,7 @@ export default function Product() {
 
         <div className="grid-wrapper py-5">
           <div className="bg-gray-200 flex flex-col gap-5 py-5">
-            <p className="font-bold">Book features</p>
+            {/*<p className="font-bold">Book features</p>*/}
             <div>
               <p className="font-bold">Size</p>
               <p>210x210x21 MM</p>
@@ -56,7 +56,7 @@ export default function Product() {
           <div></div>
           <div className="bg-gray-200 flex flex-col gap-5 py-5">
             <div className="absolute pr-10">
-              <p className="pb-5 font-bold">Information</p>
+              <p className="font-bold">About</p>
               <p>This is sample text: &lsquo;Façades of Brooklyn Heights&rsquo;
                 is a walk through the New York City neighborhood and its charming
                 streetscapes with picturesque rows of houses – a testament to the

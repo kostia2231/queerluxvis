@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 export default function ProductMenuElement() {
   return (
     <>
-      <div className="grid-wrapper pt-15">
+      <div className="grid-wrapper pt-[77px]">
         <div>
           <div className="h-[400px] w-full bg-gray-200"></div>
           <div className="flex justify-between pt-5 pr-5">
