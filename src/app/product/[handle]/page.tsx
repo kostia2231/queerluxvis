@@ -2,8 +2,9 @@ export default function Product() {
   return (
     <>
       <div className="w-full h-screen flex flex-col justify-start items-center">
-        <div className="w-full py-5 flex grow bg-black">
+        <div className="w-full py-5 flex grow bg-black text-white">
           {/* Твой контент */}
+          <div className="absolute bottom-5">Pic. 1/3</div>
         </div>
 
         <div className="mt-auto w-full text-center bottom-0 sticky grid-wrapper">
@@ -12,7 +13,9 @@ export default function Product() {
           <div></div>
           <div></div>
           <div className="bg-gray-200 w-full text-start py-5">
-            <span className="font-bold">Add To Cart</span> — €50.0
+            <p>
+              <span className="font-bold">Add To Cart</span> — €50.0
+            </p>
           </div>
         </div>
       </div>

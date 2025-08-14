@@ -1,6 +1,7 @@
 'use client'
 import { motion, AnimatePresence } from "motion/react"
 import { useState, useEffect, useRef } from "react"
+import useStore from "../store/store"
 
 type CartProps = {
   toggleCartAction: () => void
@@ -13,6 +14,7 @@ export default function Cart({
 }: CartProps) {
   const [isVisible, setIsVisible] = useState(!isClosed)
   const cartRef = useRef<HTMLDivElement>(null)
+  const totalCount = useStore(state => state.totalCount)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -57,7 +59,7 @@ export default function Cart({
             </div>
           </div>
           <div className="py-5 overflow-y-auto h-[calc(100vh-154px)] ">
-            <p>Empty</p>
+            {totalCount === 0 && (<p>Empty</p>)}
             <p className="absolute bottom-0 py-5 bg-gray-200 w-full cursor-pointer font-bold border-b">Proceed To Checkout</p>
           </div>
         </motion.div>

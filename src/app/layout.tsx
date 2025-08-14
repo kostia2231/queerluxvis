@@ -2,10 +2,12 @@
 
 import "./globals.css";
 import { useState } from "react"
-import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import GridElement from "../../components/GridElement";
-import Cart from "../../components/Cart";
+import dynamic from 'next/dynamic'
+
+const Cart = dynamic(() => import("../../components/Cart"), { ssr: false })
+const Header = dynamic(() => import("../../components/Header"), { ssr: false })
 
 export default function RootLayout({
   children,
