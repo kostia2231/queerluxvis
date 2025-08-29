@@ -1,44 +1,35 @@
-'use client'
-import PlusIcon from "./PlusIcon"
-import MinusIcon from "./MinusIcon"
-import { motion } from "motion/react"
-import useStore from "../store/store"
+import AddToCart from "./AddToCart"
+import { GET_PRODUCTS } from "../lib/queries"
+import { shopifyFetch } from "../lib/shopify"
+import { ProductsResponse } from "../types"
+import Image from "next/image"
 
-export default function ProductMenuElement() {
-  //test
-  const product = { id: 1, title: 'Товар 1', price: 50 }
-  const add = useStore(state => state.addItem)
-  const remove = useStore(state => state.removeItem)
-  const productCount = useStore(state => state.getItemQuantity(product.id))
+export default async function ProductMenuElement() {
+  const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, { first: 6 })
+  const products = data.products.edges.map(edge => edge.node)
+
+
+  console.log(products)
   return (
     <>
       <div className="grid-wrapper pt-[77px]">
-        <div>
-          <div className="h-[400px] w-full bg-gray-200"></div>
+        {products.map(p => (<div key={p.id}>
+          <div className="h-[400px] w-full relative bg-gray-200">
+            <Image
+              src={p.images.edges[0]?.node.src || ""}
+              alt={`Book Cover - ${p.id}`}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           <div className="flex justify-between pt-5 pr-5">
             <div>
-              <p>Book Title Here</p>
-              <p>— €{product.price}</p>
+              <p>{p.title}</p>
+              <p>— €{p.variants.edges[0]?.node.price.amount}</p>
             </div>
-
-
-            <div className="flex gap-5">
-              <motion.div className="w-fit h-fit cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {productCount > 0 && <MinusIcon onClick={() => { remove(product.id) }} />}
-              </motion.div>
-
-              <motion.div className="w-fit h-fit cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <PlusIcon onClick={() => add(product)} />
-              </motion.div>
-            </div>
+            <AddToCart product={p} />
           </div>
-        </div>
+        </div>))}
         <div></div>
         <div></div>
         <div></div>

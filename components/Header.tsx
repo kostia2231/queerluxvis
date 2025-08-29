@@ -56,8 +56,8 @@ export default function Header({ toggleCartAction }: HeaderProps) {
         <div className="border-r bg-white border-b"></div>
 
         <div className="grid grid-cols-2 justify-between items-center border-b">
-          <div className="py-5 bg-white">
-            <p>DE</p>
+          <div className="py-5 bg-white h-full">
+            {/*<p>DE</p>*/}
           </div>
 
           <div onClick={() => toggleCartAction()} className="bg-gray-200 py-5 flex gap-5 items-center cursor-pointer">
