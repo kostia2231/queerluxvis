@@ -1,3 +1,5 @@
+'use client'
+
 export default function MinusIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -12,8 +14,10 @@ export default function MinusIcon(props: React.SVGProps<SVGSVGElement>) {
         d="M0 16C0 7.16344 7.16344 0 16 0V0C24.8366 0 32 7.16344 32 16V16C32 24.8366 24.8366 32 16 32V32C7.16344 32 0 24.8366 0 16V16Z"
         fill="#E5E7EB"
       />
-      <rect x="8" y="15" width="16" height="2" fill="black" />
-
+      <path
+        d="M8 15H24V17H8V15Z"
+        fill="black"
+      />
     </svg>
   )
 }
