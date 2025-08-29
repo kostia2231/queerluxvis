@@ -3,7 +3,7 @@
 body * {
     box-sizing: border-box;
     margin: 0;
-    border-color: #e5e7eb;
+    border-color: #F3F4F6;
 }
 
 body {
@@ -21,4 +21,34 @@ body {
 .grid-wrapper {
     display: grid;
     grid-template-columns: 1fr 20px 1fr 20px 1fr;
+}
+
+
+.wavy {
+    position: relative;
+    text-decoration: none;
+}
+
+.wavy::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 100%;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='6' viewBox='0 0 20 6'%3E%3Cpath d='M0,3 Q5,1 10,3 T20,3' stroke='%23000000' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 30px 20px;
+    /*animation: wave-move 2s linear infinite;*/
+
+}
+
+@keyframes wave-move {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: 30px;
+    }
 }

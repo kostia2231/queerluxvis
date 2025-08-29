@@ -1,7 +1,7 @@
 import AddToCart from "./AddToCart"
 import { GET_PRODUCTS } from "../lib/queries"
 import { shopifyFetch } from "../lib/shopify"
-import { ProductsResponse } from "../types"
+import type { ProductsResponse } from "../types"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -14,7 +14,7 @@ export default async function ProductMenuElement() {
       <div className="grid grid-cols-3 gap-5 pt-[77px]">
         {products.map(p => (<div key={p.id}>
           <Link href={`/product/${p.handle}`}>
-            <div className="h-[400px] w-full relative bg-gray-200 cursor-pointer">
+            <div className="h-[400px] w-full relative bg-gray-100 cursor-pointer border-x">
               <Image
                 src={p.images.edges[0]?.node.src || "/placeholder.png"}
                 alt={`Book Cover - ${p.id}`}

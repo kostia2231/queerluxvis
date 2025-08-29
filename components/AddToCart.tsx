@@ -1,6 +1,6 @@
 'use client'
 
-import { Product } from "../types"
+import type { Product } from "../types"
 import PlusIcon from "./PlusIcon"
 import MinusIcon from "./MinusIcon"
 import useCartStore from "../store/store"
@@ -31,14 +31,14 @@ export default function AddToCart({ product }: AddToCartProps) {
     <div className="flex gap-5">
       {hydrated && quantity > 0 && (
         <div
-          className="cursor-pointer"
+          className="p-1 cursor-pointer bg-gray-100 h-fit rounded-full hover:bg-pink-300 active:bg-pink-200 transition-all duration-300"
           onClick={() => removeItem(firstVariant.id)}
         >
           <MinusIcon />
         </div>
       )}
       <div
-        className="cursor-pointer"
+        className="p-1 cursor-pointer bg-gray-100 h-fit rounded-full hover:bg-pink-300 active:bg-pink-200 transition-all duration-300"
         onClick={() =>
           addItem({
             id: firstVariant.id,

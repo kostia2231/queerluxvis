@@ -71,3 +71,31 @@ export const ADD_TO_CART = `
     }
   }
 `;
+
+
+export const GET_PRODUCT_BY_HANDLE = `
+  query getProduct($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      title
+      handle
+      images(first: 5) {
+        edges {
+          node {
+            src
+          }
+        }
+      }
+      variants(first: 5) {
+        edges {
+          node {
+            id
+            price {
+              amount
+            }
+          }
+        }
+      }
+    }
+  }
+`

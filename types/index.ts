@@ -65,3 +65,11 @@ export type CartProduct = {
     }[];
   };
 }
+
+export type PropsProductParams = {
+  params: Promise<{ handle: string }>;
+};
+
+export type ProductByHandleResponse = {
+  productByHandle: Product | null;
+};

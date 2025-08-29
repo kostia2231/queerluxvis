@@ -1,6 +1,6 @@
 'use client'
 
-import { CartProps, CartProduct } from "../types"
+import type { CartProps, CartProduct } from "../types"
 import { motion, AnimatePresence } from "motion/react"
 import { useState, useEffect, useRef } from "react"
 import useStore from "../store/store"
@@ -65,10 +65,10 @@ export default function Cart({
             </div>
             {totalPrice != 0 && (<div className="pt-5">
               <div className=""><span className="font-light">Subtotal — </span>{`€${totalPrice}`}</div>
-              <p className="text-gray-300 pb-5">Shipping calculated at checkout</p>
+              <p className="text-gray-200 pb-5">Shipping calculated at checkout</p>
 
               <div
-                className="py-5 bg-gray-200 w-full cursor-pointer hover:bg-black hover:text-white"
+                className="py-5 bg-gray-100 w-full cursor-pointer hover:bg-black hover:text-white"
                 onClick={() => {
                   const checkoutUrl = useStore.getState().checkoutUrl
                   if (checkoutUrl) {
@@ -88,7 +88,7 @@ export default function Cart({
               <div className="flex flex-col">
                 {cart.map(p => (
                   <div key={p.id} className="flex gap-5 border-t">
-                    <div className="h-[200px] w-[200px] relative bg-gray-200">
+                    <div className="h-[200px] w-[200px] relative bg-gray-100">
                       <Image
                         src={p.image || ""}
                         alt={`Book Cover - ${p.id}`}
@@ -100,7 +100,7 @@ export default function Cart({
                       <p>Title: {p.title}</p>
                       <p>Price: €{p.price}</p>
                       <div>
-                        <p>Qty: <span onClick={() => removeItem(p.id)} className="text-gray-200 cursor-pointer">(less)</span> {p.quantity} <span onClick={() => addItem(p)} className="text-gray-200 cursor-pointer">(more)</span></p>
+                        <p>Qty: <span onClick={() => removeItem(p.id)} className="text-gray-200 cursor-pointer hover:text-pink-300 active:text-pink-200">(less)</span> {p.quantity} <span onClick={() => addItem(p)} className="text-gray-200 cursor-pointer hover:text-pink-300 active:text-pink-200">(more)</span></p>
                       </div>
                     </div>
                   </div>
