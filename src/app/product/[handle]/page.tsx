@@ -2,6 +2,7 @@ import { shopifyFetch } from "../../../../lib/shopify";
 import { GET_PRODUCTS, GET_PRODUCT_BY_HANDLE } from "../../../../lib/queries";
 import type { Product, PropsProductParams, ProductByHandleResponse } from "../../../../types";
 import Image from "next/image";
+// import useCartStore from "../../../../store/store";
 
 export async function generateStaticParams() {
   const data = await shopifyFetch<{ products: { edges: { node: Product }[] } }>(GET_PRODUCTS, { first: 100 });
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
 
 export default async function Product({ params }: PropsProductParams) {
   const { handle } = await params
-
+  // const addItem = useCartStore((state) => state.addItem)
   const data = await shopifyFetch<ProductByHandleResponse>(
     GET_PRODUCT_BY_HANDLE,
     // @ts-expect-error - handle is [: string] all good...
@@ -38,7 +39,7 @@ export default async function Product({ params }: PropsProductParams) {
           <div></div>
           <div></div>
           <div></div>
-          <div className="bg-gray-100 w-full text-start py-5 cursor-pointer">
+          <div className="bg-gray-100 w-full text-start py-5 cursor-pointer hover:bg-black hover:text-white duration-300 transition-all">
             <p>
               <span className="font-bold">Add To Cart</span> — €{product.variants.edges[0].node.price.amount}
             </p>

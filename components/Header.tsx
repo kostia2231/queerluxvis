@@ -47,7 +47,7 @@ export default function Header({ toggleCartAction }: HeaderProps) {
         id="header"
         ref={headerRef}>
         <div className="cursor-pointer py-5 border-b border-r bg-white border-l" onClick={() => router.push("/")}>
-          <p className="">Q<span className="text-gray-100 hover:text-black">ueer</span>L<span className="text-gray-100 hover:text-black">ux</span>V<span className="text-gray-100 hover:text-black">is</span></p>
+          <p className="">Q<span className="opacity-20 hover:opacity-100 transition-all duration-300">ueer</span>L<span className="opacity-20 hover:opacity-100 transition-all duration-300">ux</span>V<span className="opacity-20 hover:opacity-100 transition-all duration-300">is</span></p>
         </div>
 
         <div className="border-b bg-white border-r"></div>
@@ -65,7 +65,7 @@ export default function Header({ toggleCartAction }: HeaderProps) {
 
           <div onClick={() => toggleCartAction()} className="bg-gray-100 py-5 flex gap-5 items-center cursor-pointer">
             <p>Cart</p>
-            <div className={`${count > 0 ? "bg-green-400" : "bg-white"} h-8 w-8 rounded-full text-center justify-center flex items-center`}>
+            <div className={`${count > 0 ? "bg-[#FF59A8]" : "bg-white"} h-8 w-8 rounded-full text-center justify-center flex items-center`}>
               {count}
             </div >
           </div>

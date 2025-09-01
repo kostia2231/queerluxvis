@@ -42,6 +42,17 @@ export default function Cart({
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            type: "spring", duration: 0.55, bounce: 0.25
+          }}
+          className="h-screen bg-white/60 fixed w-full left-0 z-50 backdrop-blur-sm">
+        </motion.div>
+      )}
+      {isVisible && (
+        <motion.div
           ref={cartRef}
           key="cart"
           initial={{ x: "100%" }}
@@ -68,7 +79,7 @@ export default function Cart({
               <p className="text-gray-200 pb-5">Shipping calculated at checkout</p>
 
               <div
-                className="py-5 bg-gray-100 w-full cursor-pointer hover:bg-black hover:text-white"
+                className="py-5 bg-gray-100 w-full cursor-pointer hover:bg-black hover:text-white duration-300 transition-all"
                 onClick={() => {
                   const checkoutUrl = useStore.getState().checkoutUrl
                   if (checkoutUrl) {
@@ -100,7 +111,14 @@ export default function Cart({
                       <p>Title: {p.title}</p>
                       <p>Price: €{p.price}</p>
                       <div>
-                        <p>Qty: <span onClick={() => removeItem(p.id)} className="text-gray-200 cursor-pointer hover:text-pink-300 active:text-pink-200">(less)</span> {p.quantity} <span onClick={() => addItem(p)} className="text-gray-200 cursor-pointer hover:text-pink-300 active:text-pink-200">(more)</span></p>
+                        <p>Qty: <span
+                          onClick={() => removeItem(p.id)}
+                          className="text-gray-200 cursor-pointer hover:text-[#FF59A8] active:text-pink-300">(less)
+                        </span> {p.quantity} <span
+                          onClick={() => {
+                            addItem(p)
+                          }}
+                          className="text-gray-200 cursor-pointer hover:text-[#FF59A8] active:text-pink-300">(more)</span></p>
                       </div>
                     </div>
                   </div>

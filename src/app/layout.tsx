@@ -5,6 +5,8 @@ import { useState } from "react"
 import Footer from "../../components/Footer";
 import GridElement from "../../components/GridElement";
 import dynamic from 'next/dynamic'
+import { usePathname } from 'next/navigation'
+
 
 const Cart = dynamic(() => import("../../components/Cart"), { ssr: false })
 const Header = dynamic(() => import("../../components/Header"), { ssr: false })
@@ -18,6 +20,8 @@ export default function RootLayout({
   function toggleCartAction() {
     setIsClosed(prev => !prev);
   }
+  const path = usePathname()
+  const isHome = path === '/'
 
   return (
     <html lang="en">
@@ -26,6 +30,18 @@ export default function RootLayout({
         <Cart toggleCartAction={toggleCartAction} isClosed={isClosed} />
         <Header toggleCartAction={toggleCartAction} />
         <main className="flex-grow min-h-screen">{children}</main>
+
+        {isHome && (<div className="sticky bottom-5 grid-wrapper">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div
+            className="bg-[#FF59A8] py-5 cursor-pointer hover:bg-black hover:text-white duration-300 transition-all"
+          >
+            Support us!
+          </div>
+        </div>)}
         <Footer />
       </body>
     </html>
