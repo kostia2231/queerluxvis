@@ -6,6 +6,10 @@ body * {
     border-color: #F3F4F6;
 }
 
+.border-bottom-black {
+    border-bottom: 1px solid black;
+}
+
 body {
     font-family: Helvetica, sans-serif;
     font-size: 24px;

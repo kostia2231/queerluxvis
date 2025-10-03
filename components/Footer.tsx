@@ -1,11 +1,10 @@
 export default function Footer() {
   return (
     <>
-      <div className="footer-wrapper">
+      <div className="footer-wrapper text-[18px]">
         <div></div>
         <div />
         <div className="bg-gray-100 flex flex-col py-5">
-          <a href="">Info</a>
           <a href="">Privacy Policy</a>
           <a href="">Shipping and Returns</a>
           <a href="">Impressum</a>

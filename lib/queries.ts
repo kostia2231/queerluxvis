@@ -15,7 +15,7 @@ export const GET_PRODUCTS = `
               }
             }
           }
-          variants(first: 1) {
+          variants(first: 2) {
             edges {
               node {
                 id
@@ -33,16 +33,32 @@ export const GET_PRODUCTS = `
   }
 `;
 
-export const CREATE_CART = `
-  mutation createCart {
-    cartCreate {
-      cart {
-        id
-        checkoutUrl
+export const GET_PRODUCT_BY_HANDLE = `
+  query getProduct($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      title
+      handle
+      images(first: 5) {
+        edges {
+          node {
+            src
+          }
+        }
+      }
+      variants(first: 5) {
+        edges {
+          node {
+            id
+            price {
+              amount
+            }
+          }
+        }
       }
     }
   }
-`;
+`
 
 export const ADD_TO_CART = `
   mutation addToCart($cartId: ID!, $lines: [CartLineInput!]!) {
@@ -72,30 +88,13 @@ export const ADD_TO_CART = `
   }
 `;
 
-
-export const GET_PRODUCT_BY_HANDLE = `
-  query getProduct($handle: String!) {
-    productByHandle(handle: $handle) {
-      id
-      title
-      handle
-      images(first: 5) {
-        edges {
-          node {
-            src
-          }
-        }
-      }
-      variants(first: 5) {
-        edges {
-          node {
-            id
-            price {
-              amount
-            }
-          }
-        }
+export const CREATE_CART = `
+  mutation createCart {
+    cartCreate {
+      cart {
+        id
+        checkoutUrl
       }
     }
   }
-`
+`;

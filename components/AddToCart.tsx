@@ -28,17 +28,9 @@ export default function AddToCart({ product }: AddToCartProps) {
   if (!firstVariant) return null
 
   return (
-    <div className="flex gap-5 h-fit w-fit">
-      {/*{hydrated && quantity > 0 && (
-        <div
-          className="p-1 cursor-pointer bg-gray-100 h-fit rounded-full hover:bg-[#FF59A8] active:bg-pink-300 active:rotate-90 transition-all duration-300"
-          onClick={() => removeItem(firstVariant.id)}
-        >
-          <MinusIcon />
-        </div>
-      )}*/}
+    <div className="flex gap-5 border">
       <div
-        className="p-[6.5px] cursor-pointer bg-gray-100 h-fit rounded-full hover:bg-[#FF59A8] active:bg-pink-300 active:rotate-90 transition-all duration-300"
+        className="justify-center items-center flex h-full w-[43px] cursor-pointer bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF]"
         onClick={() =>
           addItem({
             id: firstVariant.id,
@@ -48,7 +40,9 @@ export default function AddToCart({ product }: AddToCartProps) {
           })
         }
       >
-        <PlusIcon />
+        <div className="active:rotate-90 transition-all duration-200 h-full w-full flex items-center justify-center">
+          <PlusIcon />
+        </div>
       </div>
     </div>
   )

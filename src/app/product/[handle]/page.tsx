@@ -26,20 +26,24 @@ export default async function Product({ params }: PropsProductParams) {
   return (
     <>
       <div className="w-full h-screen flex flex-col justify-start items-center">
-        <div className="w-full py-5 flex grow bg-black text-white">
+        <div className="w-full flex grow bg-gray-100 text-white">
           {/* Твой контент */}
           <div className="flex items-center justify-center w-full">
-            <Image src={product.images.edges[1].node.src} width={550} height={300} objectFit="cover" alt="Book cover" />
+            <Image src={product.images.edges[0].node.src} width={550} height={300} objectFit="cover" alt="Book cover" />
           </div>
-          <div className="absolute bottom-5">Pic. 1/1</div>
+          <div className="absolute bottom-5">
+
+          </div>
         </div>
 
-        <div className="mt-auto w-full text-center bottom-0 sticky grid-wrapper">
+        <div className="mt-auto w-full text-left bottom-0 sticky grid-wrapper">
+          <div>
+            {/*<p className="font-bold py-5 text-[18px]">{product.title}</p>*/}
+          </div>
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
-          <div className="bg-gray-100 w-full text-start py-5 cursor-pointer hover:bg-black hover:text-white duration-300 transition-all">
+          <div className="bg-gray-100 w-full text-start py-5 cursor-pointer hover:bg-black hover:text-white duration-300 transition-all flex items-center">
             <p>
               <span className="font-bold">Add To Cart</span> — €{product.variants.edges[0].node.price.amount}
             </p>
@@ -48,55 +52,66 @@ export default async function Product({ params }: PropsProductParams) {
       </div>
 
       <div>
-        <div className="text-[40px] leading-[48px]">
-          <p className="font-bold">{product.title}</p>
-          <p>By Author</p>
+        <div className="">
+          {/*<div className="text-[36px] leading-[46px]">*/}
+          {/*<p className="font-bold">{product.title}</p>*/}
+          {/*<p>By Author</p>*/}
         </div>
 
         <div className="grid-wrapper py-5">
-          <div className="bg-gray-100 flex flex-col gap-5 py-5">
+          <div className="bg-gray-100 flex flex-col gap-5 py-5 ">
             {/*<p className="font-bold">Book features</p>*/}
+
             <div>
-              <p className="font-bold">Size</p>
+              <p className="font-bold text-[18px]">Author</p>
+              <p>Lord von Panen</p>
+            </div>
+
+            <div>
+              <p className="font-bold text-[18px]">Size</p>
               <p>210x210x21 MM</p>
             </div>
 
             <div>
-              <p className="font-bold">Page</p>
+              <p className="font-bold text-[18px]">Pages</p>
               <p>180</p>
             </div>
 
 
             <div>
-              <p className="font-bold">Type</p>
+              <p className="font-bold text-[18px]">Type</p>
               <p>Hardcover</p>
             </div>
 
             <div>
-              <p className="font-bold">Publishing date</p>
+              <p className="font-bold text-[18px]">Publishing date</p>
               <p>21.02.2025</p>
             </div>
 
             <div>
-              <p className="font-bold">ISBN</p>
+              <p className="font-bold text-[18px]">ISBN</p>
               <p>978-91-98427-4-2</p>
             </div>
 
           </div>
           <div></div>
-          <div className="bg-gray-100 flex flex-col gap-5 py-5">
-            <div className="absolute pr-10">
-              <p className="font-bold">About</p>
-              <p>This is sample text: &lsquo;Façades of Brooklyn Heights&rsquo;
-                is a walk through the New York City neighborhood and its charming
-                streetscapes with picturesque rows of houses – a testament to the
-                skill and creativity of their architects and builders, but also to
-                the enduring beauty and character of traditional architecture. The
-                peaceful, tree-lined streets of the Heights provide a welcome break
-                from the fast-paced lifestyle of the city, a respite from the
-                distractions of city life.</p>
-            </div>
+          <div className="bg-gray-100 flex flex-col gap-5">
+            <div className="">
+              <div className="absolute py-5 pr-10">
+                <p className="font-bold text-[18px]">{product.title}</p>
+                <p>This is sample text: &lsquo;Façades of Brooklyn Heights&rsquo;
+                  is a walk through the New York City neighborhood and its charming
+                  streetscapes with picturesque rows of houses – a testament to the
+                  skill and creativity of their architects and builders, but also to
+                  the enduring beauty and character of traditional architecture. The
+                  peaceful, tree-lined streets of the Heights provide a welcome break
+                  from the fast-paced lifestyle of the city, a respite from the
+                  distractions of city life.</p>
+              </div>
 
+            </div>
+            <div>
+            </div>
           </div>
           <div className="bg-gray-100"></div>
           <div className="bg-gray-100"></div>

@@ -6,6 +6,7 @@ import { shopifyFetch } from "../lib/shopify";
 const useCartStore = create(
   devtools(
     persist((set, get) => ({
+      isCartOpen: false,
       cart: [],
       totalCount: 0,
       cartId: null,
