@@ -1,10 +1,9 @@
 'use client'
 
 import type { Product } from "../types"
-import PlusIcon from "./PlusIcon"
-// import MinusIcon from "./MinusIcon"
 import useCartStore from "../store/store"
-// import { useState, useEffect } from "react"
+import { useState } from "react"
+import BookTypeSelector from "./BookTypeSelector"
 
 interface AddToCartProps {
   product: Product
@@ -12,38 +11,35 @@ interface AddToCartProps {
 
 export default function AddToCart({ product }: AddToCartProps) {
   const addItem = useCartStore((state) => state.addItem)
-  // const removeItem = useCartStore((state) => state.removeItem)
-  // const [hydrated, setHydrated] = useState(false)
+  const variants = product?.variants?.edges || []
+  const [selectedType, setSelectedType] = useState<"ebook" | "printed">("ebook")
 
-  const firstVariant = product?.variants?.edges?.[0]?.node
-  // const quantity = useCartStore(
-  //   (state) =>
-  //     firstVariant && hydrated ? state.getItemQuantity(firstVariant.id) : 0
-  // )
+  if (!variants.length) return null
 
-  // useEffect(() => {
-  //   setHydrated(true)
-  // }, [])
+  const selectedVariant =
+    selectedType === "printed"
+      ? variants.find(v => v.node.title.toLowerCase().includes("print"))?.node
+      : variants.find(v => v.node.title.toLowerCase().includes("digital"))?.node
 
-  if (!firstVariant) return null
+  if (!selectedVariant) return null
 
   return (
-    <div className="flex gap-5 border">
-      <div
-        className="justify-center items-center flex h-full w-[43px] cursor-pointer bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF]"
+    <div className="flex w-full cursor-pointer justify-between">
+      <BookTypeSelector onChange={setSelectedType} />
+
+      <button
+        className="text-[18px] font-bold cursor-pointer w-fit flex justify-center items-center px-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] transition-colors"
         onClick={() =>
           addItem({
-            id: firstVariant.id,
-            title: product.title,
-            price: Number(firstVariant.price.amount),
+            id: selectedVariant.id,
+            title: `${product.title} — ${selectedVariant.title}`,
+            price: Number(selectedVariant.price.amount),
             image: product.images?.edges?.[0]?.node?.src || "",
           })
         }
       >
-        <div className="active:rotate-90 transition-all duration-200 h-full w-full flex items-center justify-center">
-          <PlusIcon />
-        </div>
-      </div>
+        Add To Cart
+      </button>
     </div>
   )
 }

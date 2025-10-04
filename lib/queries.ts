@@ -66,7 +66,8 @@ export const ADD_TO_CART = `
       cart {
         id
         checkoutUrl
-        lines(first: 10) {
+        totalQuantity
+        lines(first: 100) {
           edges {
             node {
               id
@@ -77,12 +78,81 @@ export const ADD_TO_CART = `
                   title
                   product {
                     title
+                    featuredImage {
+                      url
+                    }
+                  }
+                  priceV2 {
+                    amount
+                    currencyCode
                   }
                 }
               }
             }
           }
         }
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+export const UPDATE_CART_LINE = `
+  mutation updateCartLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+    cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart {
+        id
+        lines(first: 10) {
+          edges {
+            node {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                  product { title }
+                }
+              }
+            }
+          }
+        }
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+export const REMOVE_FROM_CART = `
+  mutation removeFromCart($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        id
+        checkoutUrl
+        lines(first: 10) {
+          edges {
+            node {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+      userErrors {
+        field
+        message
       }
     }
   }
@@ -98,3 +168,35 @@ export const CREATE_CART = `
     }
   }
 `;
+
+export const GET_CART = `
+  query getCart($cartId: ID!) {
+    cart(id: $cartId) {
+      id
+      checkoutUrl
+      totalQuantity
+      lines(first: 100) {
+        edges {
+          node {
+            id
+            quantity
+            merchandise {
+              ... on ProductVariant {
+                id
+                price {
+                  amount
+                }
+                product {
+                  title
+                  featuredImage {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  `

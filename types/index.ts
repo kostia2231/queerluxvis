@@ -48,6 +48,7 @@ export type Variant = {
 
 export type CartProduct = {
   id: string
+  lineId: string
   title: string
   price: number
   quantity: number

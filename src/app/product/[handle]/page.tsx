@@ -25,43 +25,41 @@ export default async function Product({ params }: PropsProductParams) {
 
   return (
     <>
-      <div className="w-full h-screen flex flex-col justify-start items-center">
-        <div className="w-full flex grow bg-gray-100 text-white">
-          {/* Твой контент */}
-          <div className="flex items-center justify-center w-full">
-            <Image src={product.images.edges[0].node.src} width={550} height={300} objectFit="cover" alt="Book cover" />
-          </div>
-          <div className="absolute bottom-5">
+      <div className="w-full flex flex-col justify-start items-center">
+        <div className="w-full grid grid-cols-3 gap-5 bg-gray-100 text-white ">
 
+          <div className="col-span-2 flex items-center justify-center w-full">
+            <Image
+              src={product.images.edges[0].node.src}
+              width={550}
+              height={300}
+              objectFit="cover"
+              alt="Book cover"
+            />
           </div>
-        </div>
 
-        <div className="mt-auto w-full text-left bottom-0 sticky grid-wrapper">
-          <div>
-            {/*<p className="font-bold py-5 text-[18px]">{product.title}</p>*/}
-          </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div className="bg-gray-100 w-full text-start py-5 cursor-pointer hover:bg-black hover:text-white duration-300 transition-all flex items-center">
-            <p>
-              <span className="font-bold">Add To Cart</span> — €{product.variants.edges[0].node.price.amount}
-            </p>
+          <div className="col-span-1 flex flex-col text-black h-full">
+            <div className="flex-grow" />
+
+            <div className="flex flex-col w-full cursor-pointer">
+              <div className="w-full grid grid-cols-2">
+                <div className="py-5 bg-white border-r">Print</div>
+                <div className="py-5 border-r bg-gray-100 text-black/30">E‐Book</div>
+              </div>
+              <div className="w-full py-5 bg-gray-100 hover:bg-black hover:text-white">
+                <span className="font-bold">Add To Cart</span> — €
+                {product.variants.edges[0].node.price.amount}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div>
-        <div className="">
-          {/*<div className="text-[36px] leading-[46px]">*/}
-          {/*<p className="font-bold">{product.title}</p>*/}
-          {/*<p>By Author</p>*/}
-        </div>
-
+        <div></div>
         <div className="grid-wrapper py-5">
           <div className="bg-gray-100 flex flex-col gap-5 py-5 ">
             {/*<p className="font-bold">Book features</p>*/}
-
             <div>
               <p className="font-bold text-[18px]">Author</p>
               <p>Lord von Panen</p>

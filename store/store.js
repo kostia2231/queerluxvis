@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import { CREATE_CART, ADD_TO_CART } from "../lib/queries";
+import { CREATE_CART } from "../lib/queries";
 import { shopifyFetch } from "../lib/shopify";
 
 const useCartStore = create(
@@ -20,36 +20,24 @@ const useCartStore = create(
         });
       },
 
-      async addItem(item) {
-        if (!get().cartId) {
-          await get().createCart();
-        }
+      addItem: (item) =>
+        set((state) => {
+          const cartItem = state.cart.find((p) => p.id === item.id);
 
-        await shopifyFetch(ADD_TO_CART, {
-          cartId: get().cartId,
-          lines: [
-            {
-              merchandiseId: item.id,
-              quantity: 1,
-            },
-          ],
-        });
+          let updatedCart;
+          if (cartItem) {
+            updatedCart = state.cart.map((p) =>
+              p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
+            );
+          } else {
+            updatedCart = [...state.cart, { ...item, quantity: 1 }];
+          }
 
-        const cartItem = get().cart.find((p) => p.id === item.id);
-        let updatedCart;
-        if (cartItem) {
-          updatedCart = get().cart.map((p) =>
-            p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p,
-          );
-        } else {
-          updatedCart = [...get().cart, { ...item, quantity: 1 }];
-        }
-
-        set({
-          cart: updatedCart,
-          totalCount: get().totalCount + 1,
-        });
-      },
+          return {
+            cart: updatedCart,
+            totalCount: state.totalCount + 1,
+          };
+        }),
 
       getItemQuantity: (itemId) => {
         const item = get().cart.find((p) => p.id === itemId);
@@ -84,6 +72,7 @@ const useCartStore = create(
             totalCount: updatedTotalCount,
           };
         }),
+
       getCartCount: () => get().totalCount,
 
       getTotalPrice: () => {
@@ -92,6 +81,7 @@ const useCartStore = create(
           0,
         );
       },
+
       clearCart: () =>
         set(() => ({
           cart: [],

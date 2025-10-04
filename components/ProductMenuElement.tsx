@@ -29,7 +29,7 @@ export default async function ProductMenuElement() {
           <div className="flex justify-between pb-5 pt-5 pr-5 border-b">
             <div className="w-full">
               <div className="pb-2.5 flex justify-between">
-                <BookTypeSelector />
+                {/*<BookTypeSelector />*/}
                 {p && <AddToCart product={p} />}
               </div>
               <p>{p.title}</p>

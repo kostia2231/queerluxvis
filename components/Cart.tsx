@@ -38,6 +38,23 @@ export default function Cart({
     }
   }, [isClosed, toggleCartAction])
 
+  // const [loading, setLoading] = useState(false);
+  // const handleAddToCartAndCheckout = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const cartResponse = await addToCart(items);
+  //     const cartId = cartResponse.cartCreate.cart.id;
+  //     localStorage.setItem("cartId", cartId);
+  //     const checkoutResponse = await getCheckoutUrl(cartId);
+  //     const checkoutUrl = checkoutResponse.cart.checkoutUrl;
+  //     window.open(checkoutUrl, "_self");
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   return (
     <AnimatePresence>
       {isVisible && (
