@@ -28,7 +28,7 @@ export default function BookTypeSelector({ onChange }: BookTypeSelectorProps) {
         className={`py-2 px-5 transition cursor-pointer hover:text-black
           ${selected === "ebook" ? "bg-white text-black" : "text-black/20"}`}
       >
-        E-Book
+        E—Book
       </button>
     </div>
   )

@@ -76,15 +76,10 @@ export const ADD_TO_CART = `
                 ... on ProductVariant {
                   id
                   title
+                  priceV2 { amount currencyCode }
                   product {
                     title
-                    featuredImage {
-                      url
-                    }
-                  }
-                  priceV2 {
-                    amount
-                    currencyCode
+                    featuredImage { url }
                   }
                 }
               }
@@ -92,10 +87,7 @@ export const ADD_TO_CART = `
           }
         }
       }
-      userErrors {
-        field
-        message
-      }
+      userErrors { field message }
     }
   }
 `;
@@ -159,44 +151,35 @@ export const REMOVE_FROM_CART = `
 `;
 
 export const CREATE_CART = `
-  mutation createCart {
-    cartCreate {
+  mutation createCart($cartInput: CartInput!) {
+    cartCreate(input: $cartInput) {
       cart {
         id
         checkoutUrl
-      }
-    }
-  }
-`;
-
-export const GET_CART = `
-  query getCart($cartId: ID!) {
-    cart(id: $cartId) {
-      id
-      checkoutUrl
-      totalQuantity
-      lines(first: 100) {
-        edges {
-          node {
-            id
-            quantity
-            merchandise {
-              ... on ProductVariant {
-                id
-                price {
-                  amount
-                }
-                product {
+        totalQuantity
+        lines(first: 20) {
+          edges {
+            node {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
                   title
-                  featuredImage {
-                    url
-                  }
+                  priceV2 { amount currencyCode }
                 }
               }
             }
           }
         }
       }
+      userErrors { field message }
     }
   }
-  `
+`;
+
+export const GET_CART = `
+  query getCart($cartId: ID!) {
+    cart(id: $cartId) { id checkoutUrl }
+  }
+`;

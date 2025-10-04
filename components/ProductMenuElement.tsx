@@ -4,7 +4,6 @@ import { shopifyFetch } from "../lib/shopify"
 import type { ProductsResponse } from "../types"
 import Image from "next/image"
 import Link from "next/link"
-import BookTypeSelector from "./BookTypeSelector"
 
 export default async function ProductMenuElement() {
   const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, { first: 6 })
@@ -29,7 +28,6 @@ export default async function ProductMenuElement() {
           <div className="flex justify-between pb-5 pt-5 pr-5 border-b">
             <div className="w-full">
               <div className="pb-2.5 flex justify-between">
-                {/*<BookTypeSelector />*/}
                 {p && <AddToCart product={p} />}
               </div>
               <p>{p.title}</p>

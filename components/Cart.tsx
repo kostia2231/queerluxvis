@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react"
 import useStore from "../store/store"
 import useCartStore from "../store/store"
 import Image from "next/image"
+import { createCart } from "../lib/shopifyCart";
 
 export default function Cart({
   toggleCartAction,
@@ -17,6 +18,8 @@ export default function Cart({
   const totalPrice: number = useStore((state) => state.getTotalPrice())
   const addItem = useCartStore((state) => state.addItem)
   const removeItem = useCartStore((state) => state.removeItem)
+  const [loading, setLoading] = useState(false);
+  const items = useCartStore((state) => state.cart);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -38,22 +41,19 @@ export default function Cart({
     }
   }, [isClosed, toggleCartAction])
 
-  // const [loading, setLoading] = useState(false);
-  // const handleAddToCartAndCheckout = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const cartResponse = await addToCart(items);
-  //     const cartId = cartResponse.cartCreate.cart.id;
-  //     localStorage.setItem("cartId", cartId);
-  //     const checkoutResponse = await getCheckoutUrl(cartId);
-  //     const checkoutUrl = checkoutResponse.cart.checkoutUrl;
-  //     window.open(checkoutUrl, "_self");
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleCheckout = async () => {
+    if (!items.length) return
+    setLoading(true);
+    try {
+      const newCart = await createCart(items);
+      localStorage.setItem("cartId", newCart.id);
+      window.open(newCart.checkoutUrl, "_self");
+    } catch (err) {
+      console.error("Checkout error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -97,14 +97,11 @@ export default function Cart({
 
               <div
                 className="py-5 bg-gray-100 w-full cursor-pointer hover:bg-black hover:text-white"
-                onClick={() => {
-                  const checkoutUrl = useStore.getState().checkoutUrl
-                  if (checkoutUrl) {
-                    window.location.href = checkoutUrl
-                  }
-                }}
+                onClick={handleCheckout}
               >
-                <div>Proceed To Checkout</div>
+                <p className="font-bold">
+                  {loading ? "Proceed To Checkout..." : "Proceed To Checkout"}
+                </p>
               </div>
             </div>)}
 
