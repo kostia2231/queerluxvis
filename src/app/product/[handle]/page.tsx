@@ -2,7 +2,7 @@ import { shopifyFetch } from "../../../../lib/shopify";
 import { GET_PRODUCTS, GET_PRODUCT_BY_HANDLE } from "../../../../lib/queries";
 import type { Product, PropsProductParams, ProductByHandleResponse } from "../../../../types";
 import Image from "next/image";
-// import useCartStore from "../../../../store/store";
+import ProductBuySection from "../../../../components/ProductBuySection";
 
 export async function generateStaticParams() {
   const data = await shopifyFetch<{ products: { edges: { node: Product }[] } }>(GET_PRODUCTS, { first: 100 });
@@ -13,14 +13,13 @@ export async function generateStaticParams() {
 
 export default async function Product({ params }: PropsProductParams) {
   const { handle } = await params
-  // const addItem = useCartStore((state) => state.addItem)
   const data = await shopifyFetch<ProductByHandleResponse>(
     GET_PRODUCT_BY_HANDLE,
-    // @ts-expect-error - handle is [: string] all good...
     { handle }
   );
 
   const product = data.productByHandle;
+  console.log(product)
   if (!product) return <p>Product not found :(</p>;
 
   return (
@@ -40,17 +39,7 @@ export default async function Product({ params }: PropsProductParams) {
 
           <div className="col-span-1 flex flex-col text-black h-full">
             <div className="flex-grow" />
-
-            <div className="flex flex-col w-full cursor-pointer">
-              <div className="w-full grid grid-cols-2">
-                <div className="py-5 bg-white border-r">Print</div>
-                <div className="py-5 border-r bg-gray-100 text-black/30">E‐Book</div>
-              </div>
-              <div className="w-full py-5 bg-gray-100 hover:bg-black hover:text-white">
-                <span className="font-bold">Add To Cart</span> — €
-                {product.variants.edges[0].node.price.amount}
-              </div>
-            </div>
+            <ProductBuySection product={product} />
           </div>
         </div>
       </div>
@@ -71,8 +60,8 @@ export default async function Product({ params }: PropsProductParams) {
             </div>
 
             <div>
-              <p className="font-bold text-[18px]">Pages</p>
-              <p>180</p>
+              <p className="font-bold text-[18px]">Words</p>
+              <p>5 893</p>
             </div>
 
 
@@ -97,14 +86,9 @@ export default async function Product({ params }: PropsProductParams) {
             <div className="">
               <div className="absolute py-5 pr-10">
                 <p className="font-bold text-[18px]">{product.title}</p>
-                <p>This is sample text: &lsquo;Façades of Brooklyn Heights&rsquo;
-                  is a walk through the New York City neighborhood and its charming
-                  streetscapes with picturesque rows of houses – a testament to the
-                  skill and creativity of their architects and builders, but also to
-                  the enduring beauty and character of traditional architecture. The
-                  peaceful, tree-lined streets of the Heights provide a welcome break
-                  from the fast-paced lifestyle of the city, a respite from the
-                  distractions of city life.</p>
+                <p>
+                  Many years ago, a young man travelled to the jungles of the Amazon, to a plant-medicine centre called the Boiling River. He wanted to study at the feet of a great shaman the healing powers of Ayahuasca. The experience was illuminating and cathartic but, at the same time, deeply painful; he came face to face with a trauma he had spent most of his life running away from. On his last day, before the final ceremony, he set an intention for himself. This is something one does before every ceremony. Although he knew that Ayahuasca would never hurt him, he thought that the intention he set would lead to his death. He took a pen and paper, sat by the hot spring, and as the creatures of the jungle prepared to welcome the night, he wrote a letter to the two people who had given him life.
+                </p>
               </div>
 
             </div>

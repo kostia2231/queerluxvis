@@ -50,6 +50,7 @@ export const GET_PRODUCT_BY_HANDLE = `
         edges {
           node {
             id
+            title
             price {
               amount
             }

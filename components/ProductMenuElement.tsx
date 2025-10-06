@@ -1,40 +1,75 @@
+'use client'
+
 import AddToCart from "./AddToCart"
-import { GET_PRODUCTS } from "../lib/queries"
-import { shopifyFetch } from "../lib/shopify"
-import type { ProductsResponse } from "../types"
 import Image from "next/image"
 import Link from "next/link"
+import { Product } from "../types"
+import { MouseEvent, useState } from "react"
 
-export default async function ProductMenuElement() {
-  const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, { first: 6 })
-  const products = data.products.edges.map(edge => edge.node)
-  console.log(data)
+export default function ProductMenuElement({ products }: { products: Product[] }) {
+  const [tooltip, setTooltip] = useState({
+    visible: false,
+    x: 0,
+    y: 0,
+  });
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setTooltip({ visible: true, x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip({ visible: false, x: 0, y: 0 });
+  };
 
   return (
     <>
       {/*pt-[77px]*/}
       <div className="grid grid-cols-3 gap-5 pt-5">
-        {products.map(p => (<div key={p.id} className="">
-          <Link href={`/product/${p.handle}`}>
-            <div className="h-[400px] w-full relative bg-gray-100 cursor-pointer">
-              <Image
-                src={p.images.edges[0]?.node.src || "/placeholder.png"}
-                alt={`Book Cover - ${p.id}`}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          </Link>
-          <div className="flex justify-between pb-5 pt-5 pr-5 border-b">
-            <div className="w-full">
-              <div className="pb-2.5 flex justify-between">
-                {p && <AddToCart product={p} />}
+        {products
+          .filter(p => !p.title.toLowerCase().includes("donation"))
+          .map(p => (
+            <div key={p.id} className="">
+              <Link href={`/product/${p.handle}`}>
+                <div
+                  className="h-[400px] w-full relative bg-gray-100 cursor-none overflow-hidden"
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Image
+                    src={p.images.edges[0]?.node.src || "/placeholder.png"}
+                    alt={`Book Cover - ${p.id}`}
+                    fill
+                    className="object-cover"
+                  />
+
+                  {tooltip.visible && (
+                    <div
+                      className="absolute pointer-events-none select-none
+                      bg-[#FF59A8] text-black font-bold text-[18px] px-5 py-2"
+                      style={{
+                        left: tooltip.x,
+                        top: tooltip.y,
+                        opacity: tooltip.visible ? 1 : 0,
+                      }}
+                    >
+                      <p>Open</p>
+                    </div>
+                  )}
+                </div>
+              </Link>
+              <div className="flex justify-between pb-5 pt-5 pr-5 border-b">
+                <div className="w-full">
+                  <div className="pb-2.5 flex justify-between">
+                    {p && <AddToCart product={p} />}
+                  </div>
+                  <p>{p.title}</p>
+                  <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+                </div>
               </div>
-              <p>{p.title}</p>
-              <p>— €{p.variants.edges[0]?.node.price.amount}</p>
-            </div>
-          </div>
-        </div>))}
+            </div>))}
       </div>
     </>
   )

@@ -22,8 +22,8 @@ export default function Cart({
   const items = useCartStore((state) => state.cart);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+    function handleClickOutside(e: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
         toggleCartAction()
       }
     }
@@ -81,8 +81,6 @@ export default function Cart({
           className="h-screen w-1/2 bg-white fixed right-0 border-l z-50"
         >
           <div>
-
-
             <div className="flex justify-between border-b">
               <div></div>
               <div className="p-5">

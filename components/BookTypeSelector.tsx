@@ -7,7 +7,7 @@ interface BookTypeSelectorProps {
 }
 
 export default function BookTypeSelector({ onChange }: BookTypeSelectorProps) {
-  const [selected, setSelected] = useState<"ebook" | "printed">("ebook")
+  const [selected, setSelected] = useState<"ebook" | "printed">("printed")
 
   const handleSelect = (value: "ebook" | "printed") => {
     setSelected(value)
@@ -19,16 +19,16 @@ export default function BookTypeSelector({ onChange }: BookTypeSelectorProps) {
       <button
         onClick={() => handleSelect("printed")}
         className={`py-2 px-5 transition cursor-pointer hover:text-black
-          ${selected === "printed" ? "bg-white text-black" : "text-black/20"}`}
+          ${selected === "printed" ? "bg-white text-black font-bold" : "text-black/20"}`}
       >
         Print
       </button>
       <button
         onClick={() => handleSelect("ebook")}
         className={`py-2 px-5 transition cursor-pointer hover:text-black
-          ${selected === "ebook" ? "bg-white text-black" : "text-black/20"}`}
+          ${selected === "ebook" ? "bg-white text-black font-bold" : "text-black/20"}`}
       >
-        E—Book
+        E-Book
       </button>
     </div>
   )

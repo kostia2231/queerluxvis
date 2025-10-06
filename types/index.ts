@@ -1,3 +1,20 @@
+export type CheckoutCreateResponse = {
+  checkoutCreate: {
+    checkout: {
+      id: string;
+      webUrl: string;
+    } | null;
+    userErrors: { message: string }[];
+  };
+};
+
+export type CartCreateResponse = {
+  cartCreate: {
+    cart: { id: string; checkoutUrl: string } | null;
+    userErrors: { message: string }[];
+  };
+};
+
 export type Product = {
   id: string
   title: string
