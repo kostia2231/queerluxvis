@@ -5,8 +5,7 @@ import { useState } from "react"
 import Footer from "../../components/Footer";
 import GridElement from "../../components/GridElement";
 import dynamic from 'next/dynamic'
-import { motion, AnimatePresence } from "motion/react"
-import SupportSlider from "../../components/SupportSlider";
+import { motion } from "motion/react"
 
 const Cart = dynamic(() => import("../../components/Cart"), { ssr: false })
 const Header = dynamic(() => import("../../components/Header"), { ssr: false })
@@ -21,11 +20,6 @@ export default function RootLayout({
     setIsClosed(prev => !prev);
   }
 
-  const [donationIsOpen, setDonationOpen] = useState<boolean>(false)
-  function toggleDonationAction() {
-    setDonationOpen(prev => !prev);
-  }
-
   return (
     <html lang="en">
       <motion.body
@@ -34,15 +28,7 @@ export default function RootLayout({
         <GridElement />
 
         <Cart toggleCartAction={toggleCartAction} isClosed={isClosed} />
-        <Header toggleCartAction={toggleCartAction} toggleDonationAction={toggleDonationAction} />
-        <AnimatePresence mode="wait">
-          {donationIsOpen && (
-            <SupportSlider
-              key="support-slider"
-            />
-          )}
-        </AnimatePresence>
-
+        <Header toggleCartAction={toggleCartAction} />
         <main className="flex-grow">{children}</main>
         <Footer />
       </motion.body>

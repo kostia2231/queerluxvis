@@ -2,14 +2,13 @@
 
 import { useRef } from "react"
 import { useRouter } from "next/navigation"
-import useStore from "../store/store"
+import useCartStore from "../store/store"
+import Link from "next/link"
 
-export default function Header({ toggleCartAction, toggleDonationAction }: {
-  toggleCartAction: () => void
-  toggleDonationAction: () => void
-}) {
+export default function Header() {
   const headerRef = useRef<HTMLDivElement>(null)
-  const count = useStore((state) => state.getCartCount())
+  const { openCart } = useCartStore()
+  const count = useCartStore((state) => state.getCartCount())
   const router = useRouter()
 
   return (
@@ -28,16 +27,15 @@ export default function Header({ toggleCartAction, toggleDonationAction }: {
 
         <div >
           <div
-            onClick={() => toggleDonationAction()}
-            className="border-x py-5 cursor-pointer bg-white hover:bg-[#FF59A8] hover:text-white border-b hover:border-b-[#FF59A8] hover:border-x-0">
-            <p>Support us!</p>
+            className="border-x cursor-pointer bg-white hover:bg-[#FF59A8] hover:text-white border-b hover:border-b-[#FF59A8] hover:border-x-0">
+            <Link href={"/donation"} className="w-full h-full block py-5">Support us!</Link>
           </div>
         </div>
 
         <div className="bg-white border-b"></div>
 
         <div className="justify-between items-center">
-          <div onClick={() => toggleCartAction()} className="bg-gray-100 py-5 flex gap-2.5 items-center cursor-pointer hover:bg-black hover:text-white border-b">
+          <div onClick={() => openCart()} className="bg-gray-100 py-5 flex gap-2.5 items-center cursor-pointer hover:bg-black hover:text-white border-b">
             <p>Cart</p>
             <div className={`${count > 0 ? "bg-[#FF59A8]" : "bg-white"} h-8 w-8 text-center justify-center flex items-center text-black`}>
               {count}

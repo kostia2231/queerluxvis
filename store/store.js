@@ -5,90 +5,89 @@ import { shopifyFetch } from "../lib/shopify";
 
 const useCartStore = create(
   devtools(
-    persist((set, get) => ({
-      isCartOpen: false,
-      cart: [],
-      totalCount: 0,
-      cartId: null,
-      checkoutUrl: null,
+    persist(
+      (set, get) => ({
+        isCartOpen: false,
+        cart: [],
+        totalCount: 0,
+        cartId: null,
+        checkoutUrl: null,
 
-      async createCart() {
-        const data = await shopifyFetch(CREATE_CART);
-        set({
-          cartId: data.cartCreate.cart.id,
-          checkoutUrl: data.cartCreate.cart.checkoutUrl,
-        });
-      },
+        async createCart() {
+          const data = await shopifyFetch(CREATE_CART);
+          set({
+            cartId: data.cartCreate.cart.id,
+            checkoutUrl: data.cartCreate.cart.checkoutUrl,
+          });
+        },
 
-      addItem: (item) =>
-        set((state) => {
-          const cartItem = state.cart.find((p) => p.id === item.id);
+        addItem: (item) => {
+          set((state) => {
+            const cartItem = state.cart.find((p) => p.id === item.id);
+            let updatedCart;
 
-          let updatedCart;
-          if (cartItem) {
-            updatedCart = state.cart.map((p) =>
-              p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
-            );
-          } else {
-            updatedCart = [...state.cart, { ...item, quantity: 1 }];
-          }
+            if (cartItem) {
+              updatedCart = state.cart.map((p) =>
+                p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
+              );
+            } else {
+              updatedCart = [...state.cart, { ...item, quantity: 1 }];
+            }
 
-          return {
-            cart: updatedCart,
-            totalCount: state.totalCount + 1,
-          };
-        }),
+            return {
+              cart: updatedCart,
+              totalCount: state.totalCount + 1,
+            };
+          });
 
-      getItemQuantity: (itemId) => {
-        const item = get().cart.find((p) => p.id === itemId);
-        return item ? item.quantity : 0;
-      },
+          get().openCart();
+        },
 
-      removeItem: (itemId) =>
-        set((state) => {
-          const cartItem = state.cart.find((p) => p.id === itemId);
-          if (!cartItem) return state;
+        getItemQuantity: (itemId) => {
+          const item = get().cart.find((p) => p.id === itemId);
+          return item ? item.quantity : 0;
+        },
 
-          const updatedCart = state.cart
-            .map((p) => {
-              if (p.id === itemId) {
-                if (p.quantity === 1) {
-                  return null;
-                } else {
-                  return {
-                    ...p,
-                    quantity: p.quantity - 1,
-                  };
+        removeItem: (itemId) =>
+          set((state) => {
+            const cartItem = state.cart.find((p) => p.id === itemId);
+            if (!cartItem) return state;
+
+            const updatedCart = state.cart
+              .map((p) => {
+                if (p.id === itemId) {
+                  if (p.quantity === 1) {
+                    return null;
+                  } else {
+                    return { ...p, quantity: p.quantity - 1 };
+                  }
                 }
-              }
-              return p;
-            })
-            .filter(Boolean);
+                return p;
+              })
+              .filter(Boolean);
 
-          const updatedTotalCount = state.totalCount - 1;
+            return {
+              cart: updatedCart,
+              totalCount: Math.max(state.totalCount - 1, 0),
+            };
+          }),
 
-          return {
-            cart: updatedCart,
-            totalCount: updatedTotalCount,
-          };
-        }),
+        getCartCount: () => get().totalCount,
+        getTotalPrice: () =>
+          get().cart.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+          ),
 
-      getCartCount: () => get().totalCount,
+        clearCart: () => set({ cart: [], totalCount: 0 }),
 
-      getTotalPrice: () => {
-        return get().cart.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0,
-        );
-      },
-
-      clearCart: () =>
-        set(() => ({
-          cart: [],
-          totalCount: 0,
-        })),
-    })),
-  ),
+        openCart: () => set({ isCartOpen: true }),
+        closeCart: () => set({ isCartOpen: false }),
+        toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
+      }),
+      { name: "cart-storage" }
+    )
+  )
 );
 
 export default useCartStore;
