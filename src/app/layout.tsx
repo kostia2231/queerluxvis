@@ -32,6 +32,7 @@ export default function RootLayout({
         className="px-5 flex flex-col min-h-screen"
       >
         <GridElement />
+
         <Cart toggleCartAction={toggleCartAction} isClosed={isClosed} />
         <Header toggleCartAction={toggleCartAction} toggleDonationAction={toggleDonationAction} />
         <AnimatePresence mode="wait">
@@ -41,6 +42,7 @@ export default function RootLayout({
             />
           )}
         </AnimatePresence>
+
         <main className="flex-grow">{children}</main>
         <Footer />
       </motion.body>

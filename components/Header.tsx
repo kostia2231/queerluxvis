@@ -26,24 +26,25 @@ export default function Header({ toggleCartAction, toggleDonationAction }: {
 
         <div className="border-b bg-white"></div>
 
-        <div
-          className=" bg-white border-b py-5 flex gap-2.5 border-x hover:bg-[#FF59A8] hover:text-white cursor-pointer items-center"
-          onClick={toggleDonationAction}
-        >
-          <p>Support us!</p>
+        <div >
+          <div
+            onClick={() => toggleDonationAction()}
+            className="border-x py-5 cursor-pointer bg-white hover:bg-[#FF59A8] hover:text-white border-b hover:border-b-[#FF59A8] hover:border-x-0">
+            <p>Support us!</p>
+          </div>
         </div>
 
         <div className="bg-white border-b"></div>
 
-        <div className="justify-between items-center border-b">
-
-          <div onClick={() => toggleCartAction()} className="bg-gray-100 py-5 flex gap-2.5 items-center cursor-pointer hover:bg-black hover:text-white hover:border-bottom-black">
+        <div className="justify-between items-center">
+          <div onClick={() => toggleCartAction()} className="bg-gray-100 py-5 flex gap-2.5 items-center cursor-pointer hover:bg-black hover:text-white border-b">
             <p>Cart</p>
             <div className={`${count > 0 ? "bg-[#FF59A8]" : "bg-white"} h-8 w-8 text-center justify-center flex items-center text-black`}>
               {count}
             </div >
           </div>
         </div>
+
       </div >
     </>
   )

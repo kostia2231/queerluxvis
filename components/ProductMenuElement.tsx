@@ -34,7 +34,7 @@ export default function ProductMenuElement({ products }: { products: Product[] }
             <div key={p.id} className="">
               <Link href={`/product/${p.handle}`}>
                 <div
-                  className="h-[400px] w-full relative bg-gray-100 cursor-none overflow-hidden"
+                  className="h-[400px] w-full relative bg-gray-100 overflow-hidden"
                   onMouseMove={handleMouseMove}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -48,14 +48,14 @@ export default function ProductMenuElement({ products }: { products: Product[] }
                   {tooltip.visible && (
                     <div
                       className="absolute pointer-events-none select-none
-                      bg-[#FF59A8] text-black font-bold text-[18px] px-5 py-2"
+                      text-[#FF59A8] font-bold text-[18px] px-5 py-2"
                       style={{
                         left: tooltip.x,
                         top: tooltip.y,
                         opacity: tooltip.visible ? 1 : 0,
                       }}
                     >
-                      <p>Open</p>
+                      <p></p>
                     </div>
                   )}
                 </div>

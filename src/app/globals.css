@@ -16,6 +16,10 @@ body * {
     border-color: white;
 }
 
+.border-pinky {
+    border-bottom: 1px solid #FF59A8;
+}
+
 body {
     font-family: Helvetica, sans-serif;
     font-size: 24px;

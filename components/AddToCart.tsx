@@ -28,7 +28,7 @@ export default function AddToCart({ product }: AddToCartProps) {
       <BookTypeSelector onChange={setSelectedType} />
 
       <button
-        className="text-[18px] font-bold cursor-pointer w-fit flex justify-center items-center px-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] transition-colors"
+        className="text-[18px] font-bold cursor-pointer w-fit flex justify-center items-center px-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] hover:text-white transition-colors"
         onClick={() =>
           addItem({
             id: selectedVariant.id,

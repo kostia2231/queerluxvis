@@ -58,7 +58,7 @@ export default function ProductBuySection({ product }: Props) {
 
       <button
         onClick={handleAddToCart}
-        className="text-left w-full py-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] transition-colors cursor-pointer"      >
+        className="text-left w-full py-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] hover:text-white transition-colors cursor-pointer"      >
         <span className="font-bold">Add to Cart</span> — €{selectedVariant.price.amount}
       </button>
     </div>

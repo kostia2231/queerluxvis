@@ -23,7 +23,7 @@ export default function SupportSlider() {
   return (
     <motion.div
       layout
-      className="grid-wrapper sticky top-[77px] z-1"
+      className="grid-wrapper sticky top-[77px] z-1 w-full"
       ref={donationRef}
       key="donation"
       initial={{ y: "-100%" }}
