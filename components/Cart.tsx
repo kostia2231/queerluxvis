@@ -87,7 +87,7 @@ export default function Cart() {
                   <p className="text-gray-200 pb-5">Shipping calculated at checkout</p>
 
                   <div
-                    className="py-5 bg-gray-100 w-full cursor-pointer hover:bg-black hover:text-white"
+                    className="py-5 bg-black w-full cursor-pointer hover:bg-[#FF59A8] text-white"
                     onClick={handleCheckout}
                   >
                     <p className="font-bold">
@@ -121,13 +121,13 @@ export default function Cart() {
                           <p>Qty:{" "}
                             <span
                               onClick={() => removeItem(p.id)}
-                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8] active:text-pink-300">
+                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8]">
                               less
                             </span>
                             {" "}{p.quantity}{" "}
                             <span
                               onClick={() => addItem(p)}
-                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8] active:text-pink-300">
+                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8]">
                               more
                             </span>
                           </p>

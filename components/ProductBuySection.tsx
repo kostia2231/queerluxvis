@@ -33,6 +33,8 @@ export default function ProductBuySection({ product }: Props) {
     });
   };
 
+  const isPreorder = selectedVariant.availableForSale && selectedVariant.quantityAvailable === 0
+
   return (
     <div className="flex flex-col w-full">
 
@@ -59,8 +61,11 @@ export default function ProductBuySection({ product }: Props) {
 
       <button
         onClick={handleAddToCart}
-        className="text-left w-full py-5 bg-gray-100 hover:bg-[#FF59A8] active:bg-[#FF85BF] hover:text-white transition-colors cursor-pointer"      >
-        <span className="font-bold">Add to Cart</span> — €{selectedVariant.price.amount}
+        className="text-left w-full py-5 bg-black hover:bg-[#FF59A8] active:bg-[#FF85BF] text-white transition-colors cursor-pointer border-t"
+      >
+        <span className="font-bold">
+          {isPreorder ? "Pre-Order" : "Add To Cart"}
+        </span> — €{selectedVariant.price.amount}
       </button>
     </div>
   );

@@ -6,7 +6,7 @@ import GridElement from "../../components/GridElement";
 import dynamic from 'next/dynamic'
 import { motion } from "motion/react"
 
-const Cart = dynamic(() => import("../../components/Cart"), { ssr: false })
+const Cart = dynamic(() => import("../../components/Cart"), { ssr: true })
 const Header = dynamic(() => import("../../components/Header"), { ssr: false })
 
 export default function RootLayout({

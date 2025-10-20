@@ -32,7 +32,8 @@ export default function Donation() {
         >
           <div className="bg-gray-100">
             <p className="text-black/30 py-5">
-              *Self-publishing is a costly business, and every donation is very much appreciated.
+              ⁂ <br />
+              Self-publishing is a costly business, therefore every donation is very much appreciated! ;-)
             </p>
           </div>
 
@@ -55,7 +56,7 @@ export default function Donation() {
               <button
                 onClick={handleDonate}
                 disabled={loading}
-                className="font-bold text-left cursor-pointer bg-gray-100 text-black py-5  hover:bg-black hover:text-white transition disabled:opacity-50"
+                className="font-bold text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white transition disabled:opacity-50"
               >
                 {loading ? "Processing..." : `Donate €${amount}`}
               </button>

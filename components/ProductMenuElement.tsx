@@ -39,6 +39,8 @@ export default function ProductMenuElement({ products }: { products: Product[] }
                   onMouseLeave={handleMouseLeave}
                 >
                   <Image
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     src={p.images.edges[0]?.node.src || "/placeholder.png"}
                     alt={`Book Cover - ${p.id}`}
                     fill

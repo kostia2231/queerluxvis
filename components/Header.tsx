@@ -15,7 +15,7 @@ export default function Header() {
         className="grid-wrapper sticky top-0 z-3 transition-all duration-400"
         id="header"
         ref={headerRef}>
-        <div className="cursor-pointer py-5 border-b bg-white border-x" onClick={() => router.push("/")}>
+        <div className="cursor-pointer py-5 border-b bg-white border-x hover:bg-gray-100" onClick={() => router.push("/")}>
           {/*font-serif tracking-[1.5] font-serif text-[24px] tracking-[1] font-bold*/}
           <p className="">QueerLuxVis</p>
           {/*<p className="">Q<span className="opacity-20 hover:opacity-100 transition-all duration-300">ueer</span>L<span className="opacity-20 hover:opacity-100 transition-all duration-300">ux</span>V<span className="opacity-20 hover:opacity-100 transition-all duration-300">is</span></p>*/}

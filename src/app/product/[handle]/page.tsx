@@ -19,7 +19,7 @@ export default async function Product({ params }: PropsProductParams) {
   );
 
   const product = data.productByHandle;
-  console.log(product)
+  // console.log(product)
   if (!product) return <p>Product not found :(</p>;
 
   return (
@@ -29,11 +29,13 @@ export default async function Product({ params }: PropsProductParams) {
 
           <div className="col-span-2 flex items-center justify-center w-full">
             <Image
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               src={product.images.edges[0].node.src}
               width={550}
               height={300}
-              objectFit="cover"
               alt="Book cover"
+              className="h-auto"
             />
           </div>
 
