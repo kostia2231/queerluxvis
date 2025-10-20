@@ -37,6 +37,19 @@ body {
     grid-template-columns: 1fr 20px 1fr 20px 1fr;
 }
 
+@media (max-width: 768px) {
+    .grid-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 20px;
+    }
+
+    .footer-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+
 
 .wavy {
     position: relative;

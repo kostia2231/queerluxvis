@@ -68,11 +68,15 @@ export default function Cart() {
             transition={{
               type: "spring", duration: 0.55, bounce: 0.25
             }}
-            className="h-screen w-1/2 bg-white fixed right-0 border-l z-50"
+            className="h-screen w-1/2 bg-white fixed right-0 border-l z-50 max-[450px]:w-full max-[450px]:border-0"
           >
             <div>
               <div className="flex justify-between border-b">
-                <div></div>
+                <div className="py-5">
+                  <p>
+                    Cart
+                  </p>
+                </div>
                 <div className="p-5">
                   <p onClick={closeCart} className="cursor-pointer">
                     Close
@@ -87,7 +91,7 @@ export default function Cart() {
                   <p className="text-gray-200 pb-5">Shipping calculated at checkout</p>
 
                   <div
-                    className="py-5 bg-black w-full cursor-pointer hover:bg-[#FF59A8] text-white"
+                    className="py-5 bg-black w-full cursor-pointer hover:bg-[#FF59A8] text-white text-[18px] leading-[27px] text-center"
                     onClick={handleCheckout}
                   >
                     <p className="font-bold">
@@ -99,12 +103,12 @@ export default function Cart() {
 
               <div className="pb-5 overflow-y-auto h-[calc(100vh-245px)] ">
                 <div>
-                  {totalPrice != 0 && (<p className="py-5 text-gray-200 text">Cart</p>)}
+                  {totalPrice != 0 && (<p className="py-5 text-gray-200 text">All Items</p>)}
                   {totalPrice === 0 && (<div className="pt-5">Cart is empty</div>)}
                 </div>
                 <div className="flex flex-col">
                   {cart.map(p => (
-                    <div key={p.id} className="flex gap-5 border-t">
+                    <div key={p.id} className="flex gap-5 border-t max-[450px]:text-[18px] max-[450px]:leading-[27px]">
                       <div className="h-[200px] w-[200px] relative bg-gray-100">
                         <Image
                           src={p.image || ""}
@@ -113,22 +117,23 @@ export default function Cart() {
                           style={{ objectFit: "cover" }}
                         />
                       </div>
-                      <div>
+                      <div className="pt-5">
                         {p.isPreorder === 0 && (<p>⁂ Pre-order ⁂</p>)}
                         <p>Title: {p.title}</p>
                         <p>Price: €{p.price}</p>
                         <div>
-                          <p>Qty:{" "}
+                          <p>Quantity:{" "}
+                            {p.quantity}{" /"}
                             <span
                               onClick={() => removeItem(p.id)}
-                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8]">
-                              less
+                              className="cursor-pointer hover:text-[#FF59A8]">
+                              {" Less "}
                             </span>
-                            {" "}{p.quantity}{" "}
+                            {" / "}
                             <span
                               onClick={() => addItem(p)}
-                              className="text-gray-200 cursor-pointer hover:text-[#FF59A8]">
-                              more
+                              className="cursor-pointer hover:text-[#FF59A8]">
+                              {" More "}
                             </span>
                           </p>
                         </div>

@@ -1,6 +1,6 @@
 export async function shopifyFetch<
   TData,
-  TVariables extends Record<string, unknown> = Record<string, any>
+  TVariables extends Record<string, unknown> = Record<string, unknown>
 >(
   query: string,
   variables?: TVariables

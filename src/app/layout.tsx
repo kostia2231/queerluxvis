@@ -20,7 +20,9 @@ export default function RootLayout({
       <motion.body
         className="px-5 flex flex-col min-h-screen"
       >
-        <GridElement />
+        <div className="max-[450px]:hidden">
+          <GridElement />
+        </div>
 
         <Cart />
         <Header />

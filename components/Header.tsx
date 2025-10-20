@@ -16,21 +16,19 @@ export default function Header() {
         id="header"
         ref={headerRef}>
         <div className="cursor-pointer py-5 border-b bg-white border-x hover:bg-gray-100" onClick={() => router.push("/")}>
-          {/*font-serif tracking-[1.5] font-serif text-[24px] tracking-[1] font-bold*/}
-          <p className="">QueerLuxVis</p>
-          {/*<p className="">Q<span className="opacity-20 hover:opacity-100 transition-all duration-300">ueer</span>L<span className="opacity-20 hover:opacity-100 transition-all duration-300">ux</span>V<span className="opacity-20 hover:opacity-100 transition-all duration-300">is</span></p>*/}
+          <p className="">QLV</p>
         </div>
 
-        <div className="border-b bg-white"></div>
+        <div className="border-b bg-white max-[450px]:hidden"></div>
 
-        <div >
+        <div className="max-[450px]:hidden">
           <div
             className="border-x cursor-pointer bg-white hover:bg-[#FF59A8] hover:text-white border-b hover:border-b-[#FF59A8] hover:border-x-0">
             <Link href={"/donation"} className="w-full h-full block py-5">Support us!</Link>
           </div>
         </div>
 
-        <div className="bg-white border-b"></div>
+        <div className="bg-white border-b max-[450px]:hidden"></div>
 
         <div className="justify-between items-center">
           <div onClick={() => openCart()} className="bg-gray-100 py-5 flex gap-2.5 items-center cursor-pointer hover:bg-black hover:text-white border-b">

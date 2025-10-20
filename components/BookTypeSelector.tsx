@@ -15,7 +15,7 @@ export default function BookTypeSelector({ onChange }: BookTypeSelectorProps) {
   }
 
   return (
-    <div className="bg-gray-100 w-fit flex border text-[18px]">
+    <div className="bg-gray-100 border text-[18px] w-full grid grid-cols-2">
       <button
         onClick={() => handleSelect("printed")}
         className={`py-2 pl-2 pr-5 transition cursor-pointer hover:text-black flex gap-2

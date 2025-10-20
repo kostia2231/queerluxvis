@@ -19,7 +19,7 @@ export default async function Home() {
           </h1>
         </div>
       </div>*/}
-      <div>
+      <div className="pb-25">
         <ProductMenuElement products={products} />
       </div>
     </>

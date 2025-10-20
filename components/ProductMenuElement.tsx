@@ -27,7 +27,7 @@ export default function ProductMenuElement({ products }: { products: Product[] }
   return (
     <>
       {/*pt-[77px]*/}
-      <div className="grid grid-cols-3 gap-5 pt-5">
+      <div className="grid grid-cols-3 gap-5 pt-5 max-[450px]:grid-cols-1">
         {products
           .filter(p => !p.title.toLowerCase().includes("donation"))
           .map(p => (
@@ -62,13 +62,21 @@ export default function ProductMenuElement({ products }: { products: Product[] }
                   )}
                 </div>
               </Link>
-              <div className="flex justify-between pb-5 pt-5 pr-5 border-b">
+              <div className="flex justify-between pb-5 pt-5">
                 <div className="w-full">
+                  <div className="pb-5">
+                    <p>{p.title}</p>
+                    <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+                  </div>
+
                   <div className="pb-2.5 flex justify-between">
                     {p && <AddToCart product={p} />}
                   </div>
-                  <p>{p.title}</p>
-                  <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+
+                  {/*<div className="max-[450px]:hidden">
+                    <p>{p.title}</p>
+                    <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+                  </div>*/}
                 </div>
               </div>
             </div>))}

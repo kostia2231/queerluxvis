@@ -26,11 +26,11 @@ export default function AddToCart({ product }: AddToCartProps) {
   const isPreorder = selectedVariant.availableForSale && selectedVariant.quantityAvailable === 0
 
   return (
-    <div className="flex w-full cursor-pointer justify-between">
+    <div className="flex w-full cursor-pointer justify-between flex-col">
       <BookTypeSelector onChange={setSelectedType} />
 
       <button
-        className="text-[18px] text-white font-bold cursor-pointer w-fit flex justify-center items-center px-5 bg-black hover:bg-[#FF59A8] hover:text-white transition-colors"
+        className="text-[18px] text-white font-bold cursor-pointer flex justify-center items-center px-5 bg-black hover:bg-[#FF59A8] hover:text-white transition-colors w-full py-5"
         onClick={() =>
           addItem({
             id: selectedVariant.id,
