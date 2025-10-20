@@ -29,6 +29,7 @@ export default function ProductBuySection({ product }: Props) {
       image: product.images?.edges?.[0]?.node?.src || "",
       variants: product.variants,
       lineId: "",
+      isPreorder: selectedVariant.quantityAvailable,
     });
   };
 

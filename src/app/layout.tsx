@@ -1,7 +1,6 @@
 'use client'
 
 import "./globals.css";
-import { useState } from "react"
 import Footer from "../../components/Footer";
 import GridElement from "../../components/GridElement";
 import dynamic from 'next/dynamic'
@@ -15,10 +14,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isClosed, setIsClosed] = useState<boolean>(true);
-  function toggleCartAction() {
-    setIsClosed(prev => !prev);
-  }
 
   return (
     <html lang="en">
@@ -27,8 +22,8 @@ export default function RootLayout({
       >
         <GridElement />
 
-        <Cart toggleCartAction={toggleCartAction} isClosed={isClosed} />
-        <Header toggleCartAction={toggleCartAction} />
+        <Cart />
+        <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
       </motion.body>

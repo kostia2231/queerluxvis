@@ -114,6 +114,7 @@ export default function Cart() {
                         />
                       </div>
                       <div>
+                        {p.isPreorder === 0 && (<p>⁂ Pre-order ⁂</p>)}
                         <p>Title: {p.title}</p>
                         <p>Price: €{p.price}</p>
                         <div>

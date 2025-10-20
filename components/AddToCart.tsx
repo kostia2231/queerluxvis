@@ -12,7 +12,7 @@ interface AddToCartProps {
 export default function AddToCart({ product }: AddToCartProps) {
   const addItem = useCartStore((state) => state.addItem)
   const variants = product?.variants?.edges || []
-  const [selectedType, setSelectedType] = useState<"ebook" | "printed">("ebook")
+  const [selectedType, setSelectedType] = useState<"ebook" | "printed">("printed")
 
   if (!variants.length) return null
 
@@ -22,6 +22,8 @@ export default function AddToCart({ product }: AddToCartProps) {
       : variants.find(v => v.node.title.toLowerCase().includes("digital"))?.node
 
   if (!selectedVariant) return null
+
+  const isPreorder = selectedVariant.availableForSale && selectedVariant.quantityAvailable === 0
 
   return (
     <div className="flex w-full cursor-pointer justify-between">
@@ -35,10 +37,11 @@ export default function AddToCart({ product }: AddToCartProps) {
             title: `${product.title} — ${selectedVariant.title}`,
             price: Number(selectedVariant.price.amount),
             image: product.images?.edges?.[0]?.node?.src || "",
+            isPreorder: selectedVariant.quantityAvailable,
           })
         }
       >
-        Add To Cart
+        {isPreorder ? "Pre-order" : "Add To Cart"}
       </button>
     </div>
   )

@@ -33,6 +33,8 @@ export type Product = {
       node: {
         id: string
         title: string
+        availableForSale: boolean
+        quantityAvailable: number
         price: {
           amount: string
           currencyCode: string
@@ -68,6 +70,7 @@ export type CartProduct = {
   lineId: string
   title: string
   price: number
+  isPreorder: number
   quantity: number
   image: string
   variants: {

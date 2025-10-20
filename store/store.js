@@ -31,7 +31,7 @@ const useCartStore = create(
                 p.id === item.id ? { ...p, quantity: p.quantity + 1 } : p
               );
             } else {
-              updatedCart = [...state.cart, { ...item, quantity: 1 }];
+              updatedCart = [...state.cart, { ...item, quantity: 1, isPreorder: item.isPreorder }];
             }
 
             return {

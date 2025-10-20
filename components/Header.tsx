@@ -1,5 +1,3 @@
-'use client'
-
 import { useRef } from "react"
 import { useRouter } from "next/navigation"
 import useCartStore from "../store/store"

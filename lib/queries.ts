@@ -20,6 +20,8 @@ export const GET_PRODUCTS = `
               node {
                 id
                 title
+                availableForSale
+                quantityAvailable
                 price {
                   amount
                   currencyCode
@@ -51,6 +53,8 @@ export const GET_PRODUCT_BY_HANDLE = `
           node {
             id
             title
+            availableForSale
+            quantityAvailable
             price {
               amount
             }
