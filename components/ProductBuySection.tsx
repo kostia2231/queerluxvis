@@ -38,34 +38,39 @@ export default function ProductBuySection({ product }: Props) {
   return (
     <div className="flex flex-col w-full">
 
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 text-[18px]">
         <button
           onClick={() => setSelectedType("print")}
-          className={`text-left py-5 cursor-pointer ${selectedType === "print"
-            ? "bg-black text-white"
-            : "bg-white hover:text-black text-black/30"
+          className={`transition-colors flex items-center gap-2.5 text-left py-2.5 cursor-pointer border-t ${selectedType === "print"
+            ? "bg-gray-100 text-black"
+            : "bg-white hover:text-black text-black/30 "
             }`}
         >
-          Print
+          <div className={`w-2.5 h-2.5 rounded-full ${selectedType === "print" ? "bg-black" : "bg-gray-100"}`}></div>
+          <p>Print</p>
         </button>
         <button
           onClick={() => setSelectedType("digital")}
-          className={`text-left py-5 cursor-pointer ${selectedType === "digital"
-            ? "bg-black text-white"
-            : "bg-white hover:text-black text-black/30 border-r"
+          className={`transition-colors flex items-center gap-2.5 text-left py-2.5 cursor-pointer border-t border-r ${selectedType === "digital"
+            ? "bg-gray-100 text-black"
+            : "bg-white hover:text-black text-black/30 "
             }`}
         >
-          E-Book
+          <div className={`w-2.5 h-2.5 rounded-full ${selectedType === "digital" ? "bg-black" : "bg-gray-100"}`}></div>
+          <p>E-Book</p>
         </button>
       </div>
 
       <button
         onClick={handleAddToCart}
-        className="text-left w-full py-5 bg-black hover:bg-[#FF59A8] active:bg-[#FF85BF] text-white transition-colors cursor-pointer border-t"
+        className="flex justify-between pr-5 text-left w-full py-5 bg-black hover:bg-[#FF59A8] text-white transition-colors cursor-pointer"
       >
-        <span className="font-bold">
+        <p className="">
           {isPreorder ? "Pre-Order" : "Add To Cart"}
-        </span> — €{selectedVariant.price.amount}
+        </p>
+        <p>
+          — €{selectedVariant.price.amount}
+        </p>
       </button>
     </div>
   );

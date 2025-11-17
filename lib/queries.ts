@@ -7,6 +7,9 @@ export const GET_PRODUCTS = `
           title
           handle
           description
+          metafield(namespace: "books", key: "author") {
+            value
+          }
           images(first: 1) {
             edges {
               node {
@@ -41,6 +44,9 @@ export const GET_PRODUCT_BY_HANDLE = `
       id
       title
       handle
+      metafield(namespace: "books", key: "author") {
+        value
+      }
       images(first: 5) {
         edges {
           node {

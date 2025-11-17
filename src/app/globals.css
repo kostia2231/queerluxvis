@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 body * {
-    /*font-family: "Times New Roman";*/
-
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 300;
+    font-size: 20px;
     box-sizing: border-box;
     margin: 0;
     border-color: #F3F4F6;

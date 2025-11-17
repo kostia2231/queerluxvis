@@ -37,7 +37,7 @@ export default function Donation() {
             </p>
           </div>
 
-          <div className="border-b bg-white"></div>
+          <div></div>
 
           <div className="flex flex-col">
             <div className="flex flex-col pb-0 w-full">
@@ -56,7 +56,7 @@ export default function Donation() {
               <button
                 onClick={handleDonate}
                 disabled={loading}
-                className="font-bold text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white transition disabled:opacity-50"
+                className="text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white transition-colors disabled:opacity-50"
               >
                 {loading ? "Processing..." : `Donate €${amount}`}
               </button>

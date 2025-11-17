@@ -1,19 +1,19 @@
 export type CheckoutCreateResponse = {
   checkoutCreate: {
     checkout: {
-      id: string;
-      webUrl: string;
-    } | null;
-    userErrors: { message: string }[];
-  };
-};
+      id: string
+      webUrl: string
+    } | null
+    userErrors: { message: string }[]
+  }
+}
 
 export type CartCreateResponse = {
   cartCreate: {
-    cart: { id: string; checkoutUrl: string } | null;
-    userErrors: { message: string }[];
-  };
-};
+    cart: { id: string; checkoutUrl: string } | null
+    userErrors: { message: string }[]
+  }
+}
 
 export type Product = {
   id: string
@@ -25,9 +25,14 @@ export type Product = {
       node: {
         src: string
         altText: string | null
-      };
-    }[];
-  };
+      }
+    }[]
+  }
+
+  metafield?: {
+    value: string | null
+  }
+
   variants: {
     edges: {
       node: {
@@ -38,19 +43,19 @@ export type Product = {
         price: {
           amount: string
           currencyCode: string
-        };
-      };
-    }[];
-  };
-};
+        }
+      }
+    }[]
+  }
+}
 
 export type ProductsResponse = {
   products: {
     edges: {
       node: Product
-    }[];
-  };
-};
+    }[]
+  }
+}
 
 export type CartProps = {
   toggleCartAction: () => void
@@ -81,16 +86,16 @@ export type CartProduct = {
         price: {
           amount: string
           currencyCode: string
-        };
-      };
-    }[];
-  };
+        }
+      }
+    }[]
+  }
 }
 
 export type PropsProductParams = {
-  params: Promise<{ handle: string }>;
-};
+  params: Promise<{ handle: string }>
+}
 
 export type ProductByHandleResponse = {
-  productByHandle: Product | null;
-};
+  productByHandle: Product | null
+}

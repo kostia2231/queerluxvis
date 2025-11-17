@@ -91,10 +91,10 @@ export default function Cart() {
                   <p className="text-gray-200 pb-5">Shipping calculated at checkout</p>
 
                   <div
-                    className="py-5 bg-black w-full cursor-pointer hover:bg-[#FF59A8] text-white text-[18px] leading-[27px] text-center"
+                    className="py-5 bg-black w-full cursor-pointer hover:bg-[#FF59A8] text-white text-[24px] text-left"
                     onClick={handleCheckout}
                   >
-                    <p className="font-bold">
+                    <p className="font-light">
                       {loading ? "Proceed To Checkout..." : "Proceed To Checkout"}
                     </p>
                   </div>
@@ -108,7 +108,7 @@ export default function Cart() {
                 </div>
                 <div className="flex flex-col">
                   {cart.map(p => (
-                    <div key={p.id} className="flex gap-5 border-t max-[450px]:text-[18px] max-[450px]:leading-[27px]">
+                    <div key={p.id} className="flex gap-5 border-t max-[450px]:text-[18px] max-[450px]:leading-[26px]">
                       <div className="h-[200px] w-[200px] relative bg-gray-100">
                         <Image
                           src={p.image || ""}

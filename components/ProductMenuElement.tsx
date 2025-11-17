@@ -1,6 +1,7 @@
 'use client'
 
 import AddToCart from "./AddToCart"
+// import ProductBuySection from "./ProductBuySection"
 import Image from "next/image"
 import Link from "next/link"
 import { Product } from "../types"
@@ -32,7 +33,7 @@ export default function ProductMenuElement({ products }: { products: Product[] }
           .filter(p => !p.title.toLowerCase().includes("donation"))
           .map(p => (
             <div key={p.id} className="">
-              <Link href={`/product/${p.handle}`}>
+              <Link href={`/products/${p.handle}`}>
                 <div
                   className="h-[400px] w-full relative bg-gray-100 overflow-hidden"
                   onMouseMove={handleMouseMove}
@@ -44,7 +45,7 @@ export default function ProductMenuElement({ products }: { products: Product[] }
                     src={p.images.edges[0]?.node.src || "/placeholder.png"}
                     alt={`Book Cover - ${p.id}`}
                     fill
-                    className="object-cover"
+                    className="object-cover hover:scale-105 transition-transform"
                   />
 
                   {tooltip.visible && (
@@ -62,20 +63,17 @@ export default function ProductMenuElement({ products }: { products: Product[] }
                   )}
                 </div>
               </Link>
+
               <div className="flex justify-between pb-5 pt-5">
                 <div className="w-full">
-                  <div className="pb-5">
+                  <div className="pb-5 flex flex-col pr-5">
+                    <p>{}</p>
                     <p>{p.title}</p>
-                    <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+                    <p className="text-black/30">{p.metafield?.value}</p>
                   </div>
 
-                  <div className="pb-2.5 flex justify-between">
-                    {p && <AddToCart product={p} />}
-                  </div>
-
-                  {/*<div className="max-[450px]:hidden">
-                    <p>{p.title}</p>
-                    <p>— €{p.variants.edges[0]?.node.price.amount}</p>
+                  {/*<div className="pb-2.5 flex justify-between">
+                    <AddToCart product={p} />
                   </div>*/}
                 </div>
               </div>

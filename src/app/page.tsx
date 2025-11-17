@@ -10,15 +10,13 @@ export default async function Home() {
 
   return (
     <>
-      {/*<div className="pt-5 transition-all duration-400">
+      <div className="pt-5 transition-all duration-400">
         <div className="bg-gray-100 border p-5 border-t-0 pl-0">
-          <h1 className="opacity">
-            Our publishing is a space of visibility, dialogue, and celebration of diversity.
-            <br />
-            We explore and highlight queer culture, bringing together media, art, and activism in one flow.
+          <h1 className="opacity text-center">
+            ⁂ Publishing ⁂
           </h1>
         </div>
-      </div>*/}
+      </div>
       <div className="pb-25">
         <ProductMenuElement products={products} />
       </div>
