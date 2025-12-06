@@ -37,8 +37,37 @@ body {
     display: grid;
     grid-template-columns: 1fr 20px 1fr 20px 1fr;
 }
+.product-page-grid{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.product-page-grid > :first-child {
+    flex: 1;
+}
+
+.product-page-grid > :last-child {
+    flex: 2;
+}
+
+.footer-link{
+    cursor: pointer;
+}
+
+.footer-link:hover{
+    opacity: 0.3;
+}
 
 @media (max-width: 768px) {
+    body * {
+        font-size: 16px;
+    }
+
+    .product-page-grid{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
     .grid-wrapper {
         grid-template-columns: repeat(2, 1fr);
         row-gap: 20px;
@@ -49,8 +78,6 @@ body {
         grid-template-columns: 1fr;
     }
 }
-
-
 
 .wavy {
     position: relative;
