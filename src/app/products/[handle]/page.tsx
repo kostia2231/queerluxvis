@@ -39,7 +39,10 @@ export default async function Product({ params }: PropsProductParams) {
                         <Image
                             priority
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            src={product.images.edges[0].node.src}
+                            src={
+                                product?.images?.edges[0]?.node?.src ||
+                                "/placeholder.png"
+                            }
                             width={550}
                             height={300}
                             alt="Book cover"
