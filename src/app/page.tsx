@@ -2,7 +2,7 @@ import ProductMenuElement from "../../components/ProductMenuElement.client";
 import { shopifyFetch } from "../../lib/shopify";
 import { ProductsResponse } from "../../types";
 import { GET_PRODUCTS } from "../../lib/queries";
-import Loader from "../../components/Preloader";
+import Donation from "./donation/page";
 
 export default async function Home() {
     const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, {
@@ -21,7 +21,9 @@ export default async function Home() {
                 </div>
             </div>*/}
             <div className="pb-5">
-                <ProductMenuElement products={products} />
+                {/*<ProductMenuElement products={products} />*/}
+
+                <Donation />
             </div>
         </>
     );

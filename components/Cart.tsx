@@ -126,7 +126,7 @@ export default function Cart() {
                                     )}
                                     {totalPrice === 0 && (
                                         <div className="pt-5 max-[768px]:pl-5">
-                                            Cart is empty
+                                            Book is coming, stay tuned!
                                         </div>
                                     )}
                                 </div>

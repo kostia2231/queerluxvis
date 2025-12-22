@@ -3,7 +3,7 @@
 body * {
     font-family: "IBM Plex Serif", serif;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 18px;
     box-sizing: border-box;
     margin: 0;
     border-color: #F3F4F6;
@@ -23,7 +23,7 @@ body * {
 
 body {
     font-family: Helvetica, sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     overflow-x: hidden;
 }
@@ -34,6 +34,10 @@ body {
 }
 
 .grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr 20px 1fr;
+}
+.grid-wrapper-m {
     display: grid;
     grid-template-columns: 1fr 20px 1fr 20px 1fr;
 }
@@ -70,6 +74,10 @@ body {
     }
     .grid-wrapper {
         grid-template-columns: repeat(2, 1fr);
+        row-gap: 20px;
+    }
+    .grid-wrapper-m {
+        grid-template-columns: repeat(1, 1fr);
         row-gap: 20px;
     }
 

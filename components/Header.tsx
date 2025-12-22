@@ -29,13 +29,13 @@ export default function Header() {
                 <div className="border-b bg-white max-[450px]:hidden"></div>
 
                 <div className="max-[450px]:hidden">
-                    <div className="transition-colors border-x cursor-pointer bg-white hover:bg-[#FF59A8] hover:text-white border-b">
-                        <Link
+                    <div className="transition-colors border-x  bg-white border-b h-full">
+                        {/*<Link
                             href={"/donation"}
-                            className="w-full h-full block py-5"
+                            className="w-full h-full block py-5 hover:bg-[#FF59A8] hover:text-white"
                         >
                             Support us!
-                        </Link>
+                        </Link>*/}
                     </div>
                 </div>
 
