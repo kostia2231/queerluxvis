@@ -1,14 +1,14 @@
-import ProductMenuElement from "../../components/ProductMenuElement.client";
-import { shopifyFetch } from "../../lib/shopify";
-import { ProductsResponse } from "../../types";
-import { GET_PRODUCTS } from "../../lib/queries";
+// import ProductMenuElement from "../../components/ProductMenuElement.client";
+// import { shopifyFetch } from "../../lib/shopify";
+// import { ProductsResponse } from "../../types";
+// import { GET_PRODUCTS } from "../../lib/queries";
 import Donation from "./donation/page";
 
 export default async function Home() {
-    const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, {
-        first: 6,
-    });
-    const products = data.products.edges.map((edge) => edge.node);
+    // const data = await shopifyFetch<ProductsResponse>(GET_PRODUCTS, {
+    //     first: 6,
+    // });
+    // const products = data.products.edges.map((edge) => edge.node);
     // console.log(data)
 
     return (
