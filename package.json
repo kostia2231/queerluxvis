@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "motion": "^12.23.12",
-    "next": "15.4.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "zustand": "^5.0.7"
   },
   "devDependencies": {
@@ -27,6 +27,6 @@
     "typescript": "^5"
   },
   "engines": {
-      "node": "20.x"
+    "node": "20.x"
   }
 }
