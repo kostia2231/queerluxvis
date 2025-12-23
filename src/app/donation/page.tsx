@@ -83,7 +83,7 @@ export default function Donation() {
                             <button
                                 onClick={handleDonate}
                                 disabled={loading}
-                                className="text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white transition-colors disabled:opacity-50"
+                                className="text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white disabled:opacity-50"
                             >
                                 {loading
                                     ? "Processing..."
@@ -93,7 +93,7 @@ export default function Donation() {
                         <div className="pt-5"></div>
                         <button
                             onClick={handleDonatePayPal}
-                            className="text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white transition-colors disabled:opacity-50"
+                            className="text-left cursor-pointer bg-black text-white py-5  hover:bg-[#FF59A8] hover:text-white disabled:opacity-50"
                         >
                             Donate via PayPal
                         </button>
