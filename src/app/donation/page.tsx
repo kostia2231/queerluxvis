@@ -64,8 +64,7 @@ export default function Donation() {
                         <div className="flex flex-col pb-0 w-full">
                             <div className="flex flex-col justify-center items-center">
                                 <p className="text-left w-full py-5 pr-5 bg-gray-100">
-                                    Set your desired donation amount down here
-                                    &lt;3
+                                    Set your desired donation amount here &lt;3
                                 </p>
                                 <input
                                     id="amount"
