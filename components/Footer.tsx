@@ -17,7 +17,12 @@ export default function Footer() {
                 </div>
                 <div className="bg-gray-100 py-5 max-[768px]:hidden" />
                 <div className="bg-gray-100 py-5 flex flex-col max-[768px]:pt-0">
-                    <a className="footer-link">info@queerluxvis.com</a>
+                    <a
+                        href="mailto:info@queerluxvis.com"
+                        className="footer-link"
+                    >
+                        info@queerluxvis.com
+                    </a>
                     <br />
                     <a href="https://x.com/QueerLuxVis" className="footer-link">
                         X
