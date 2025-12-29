@@ -13,12 +13,12 @@ export default function Header() {
     return (
         <>
             <div
-                className="grid-wrapper sticky top-0 z-3"
+                className="grid-wrapper sticky top-0 z-3 border-t"
                 id="header"
                 ref={headerRef}
             >
                 <div
-                    className="cursor-pointer border-b bg-white border-x hover:bg-gray-100"
+                    className="cursor-pointer border-b bg-white border-x hover:bg-gray-100 "
                     onClick={() => router.push("/")}
                 >
                     <QLVAnimation />
