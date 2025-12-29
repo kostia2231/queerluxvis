@@ -38,8 +38,13 @@ export default function Donation() {
                             {/*⁂ <br />*/}
                             {/*Self-publishing is a costly business, therefore every donation is very much appreciated! ;-)*/}
                             QueerLuxVis{" "}
-                            <span className="opacity-30">
-                                (Queerluxvis e.V.)
+                            <span className="opacity-30 hover:opacity-100 hover:bg-[#FF59A8] hover:text-white">
+                                <a
+                                    href="https://www.online-handelsregister.de/handelsregisterauszug/be/Berlin-Charlottenburg/VR/41594/Queerluxvis-eV"
+                                    target="_blank"
+                                >
+                                    Queerluxvis e.V.
+                                </a>
                             </span>{" "}
                             is a newly established nonprofit association based
                             in Berlin, Germany, dedicated to the reading,
@@ -64,7 +69,7 @@ export default function Donation() {
                         <div className="flex flex-col pb-0 w-full">
                             <div className="flex flex-col justify-center items-center">
                                 <p className="text-left w-full py-5 pr-5 bg-gray-100">
-                                    Set your desired donation amount here &lt;3
+                                    Set your desired donation amount &lt;3
                                 </p>
                                 <input
                                     id="amount"
@@ -99,10 +104,10 @@ export default function Donation() {
 
                         <div className="pt-5">
                             <p className="py-5 pr-5 bg-gray-100">
-                                Bank details
-                                <span className="opacity-30"> (SEPA)</span>:
+                                <span>Bank details:</span>
                                 <br /> Queerluxvis e.V. <br />
                                 DE21 4306 0967 1350 5489 00 <br /> GENODEM1GLS
+                                <br />
                                 GLS Gemeinschaftsbank eG
                             </p>
                         </div>

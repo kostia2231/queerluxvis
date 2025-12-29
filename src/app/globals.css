@@ -56,10 +56,12 @@ body {
 
 .footer-link{
     cursor: pointer;
+    width: fit-content;
 }
 
 .footer-link:hover{
-    opacity: 0.3;
+    background-color: #FF59A8;
+    color: white;
 }
 
 @media (max-width: 768px) {

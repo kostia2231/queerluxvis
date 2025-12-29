@@ -24,18 +24,24 @@ export default function Footer() {
                         info@queerluxvis.com
                     </a>
                     <br />
-                    <a href="https://x.com/QueerLuxVis" className="footer-link">
+                    <a
+                        href="https://x.com/QueerLuxVis"
+                        className="footer-link"
+                        target="_blank"
+                    >
                         X
                     </a>
                     <a
                         href="https://www.instagram.com/queerluxvis/"
                         className="footer-link"
+                        target="_blank"
                     >
                         Instagram
                     </a>
                     <a
                         href="https://www.facebook.com/people/Queerluxvis/61577503179951/"
                         className="footer-link"
+                        target="_blank"
                     >
                         Facebook
                     </a>
