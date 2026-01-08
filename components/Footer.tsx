@@ -5,13 +5,16 @@ export default function Footer() {
                 <div></div>
                 <div />
                 <div className="bg-gray-100 flex flex-col py-5">
-                    <a href="" className="footer-link">
+                    <a href="/privacy-policy" className="footer-link">
                         Privacy Policy
+                    </a>
+                    <a href="/terms" className="footer-link">
+                        Terms of Service
                     </a>
                     {/*<a href="" className="footer-link">
                         Shipping and Returns
                     </a>*/}
-                    <a href="" className="footer-link">
+                    <a href="/impressum" className="footer-link">
                         Impressum
                     </a>
                 </div>

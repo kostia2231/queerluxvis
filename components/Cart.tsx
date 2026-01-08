@@ -76,7 +76,7 @@ export default function Cart() {
                             duration: 0.55,
                             bounce: 0.25,
                         }}
-                        className="h-screen w-1/2 bg-white fixed right-0 border-l z-50 max-[450px]:w-full max-[450px]:border-0"
+                        className="h-screen w-1/2 bg-white fixed right-0 border-l z-50 max-[768px]:w-full max-[768px]:border-0"
                     >
                         <div>
                             <div className="flex justify-between border-b">
@@ -134,7 +134,7 @@ export default function Cart() {
                                     {cart.map((p) => (
                                         <div
                                             key={p.id}
-                                            className="flex gap-5 border-t max-[450px]:text-[18px] max-[450px]:leading-[26px]"
+                                            className="flex gap-5 border-t max-[768px]:text-[18px] max-[768px]:leading-[26px]"
                                         >
                                             <div className="h-[200px] w-[200px] relative bg-gray-100">
                                                 <Image

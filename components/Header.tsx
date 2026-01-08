@@ -26,9 +26,9 @@ export default function Header() {
                     {/*<p className="">Queer Lux Vis</p>*/}
                 </div>
 
-                <div className="border-b bg-white max-[450px]:hidden"></div>
+                <div className="border-b bg-white max-[768px]:hidden"></div>
 
-                <div className="max-[450px]:hidden">
+                <div className="max-[768px]:hidden">
                     <div className="border-x  bg-white border-b h-full">
                         {/*<Link
                             href={"/donation"}
@@ -39,7 +39,7 @@ export default function Header() {
                     </div>
                 </div>
 
-                <div className="bg-white border-b max-[450px]:hidden"></div>
+                <div className="bg-white border-b max-[768px]:hidden"></div>
 
                 <div className="justify-between items-center">
                     <div

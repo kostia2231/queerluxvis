@@ -27,7 +27,7 @@ export default function RootLayout({
 
             <motion.body className="px-5 flex flex-col min-h-screen">
                 <Loader />
-                <div className="max-[450px]:hidden">
+                <div className="max-[768px]:hidden">
                     <GridElement />
                 </div>
 
