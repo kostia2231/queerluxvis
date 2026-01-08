@@ -11,9 +11,9 @@ export default function Footer() {
                     <a href="/terms" className="footer-link">
                         Terms of Service
                     </a>
-                    {/*<a href="" className="footer-link">
-                        Shipping and Returns
-                    </a>*/}
+                    <a href="/returns" className="footer-link">
+                        Returns and Refund
+                    </a>
                     <a href="/impressum" className="footer-link">
                         Impressum
                     </a>
